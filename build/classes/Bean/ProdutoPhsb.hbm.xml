@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 14/09/2023 08:40:39 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Bean.ProdutoPhsb" table="produto_phsb" catalog="db_pedro_barbosa" optimistic-lock="version">
+        <id name="idProdutoPhsb" type="int">
+            <column name="id_produto_phsb" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="vendedorPhsb" class="Bean.VendedorPhsb" fetch="select">
+            <column name="fk_id_vendedor_phsb" not-null="true" />
+        </many-to-one>
+        <property name="tipoPhsb" type="string">
+            <column name="tipo_phsb" length="20" not-null="true" />
+        </property>
+        <property name="valorPhsb" type="string">
+            <column name="valor_phsb" length="100" not-null="true" />
+        </property>
+        <property name="nomePhsb" type="string">
+            <column name="nome_phsb" length="20" not-null="true" />
+        </property>
+        <set name="vendaProdutoPhsbs" table="venda_produto_phsb" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="fk_id_produto_phsb" not-null="true" />
+            </key>
+            <one-to-many class="Bean.VendaProdutoPhsb" />
+        </set>
+    </class>
+</hibernate-mapping>

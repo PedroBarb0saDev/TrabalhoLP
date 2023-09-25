@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 14/09/2023 08:40:39 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Bean.VendaProdutoPhsb" table="venda_produto_phsb" catalog="db_pedro_barbosa" optimistic-lock="version">
+        <id name="idVendaProdutoPhsb" type="int">
+            <column name="id_venda_produto_phsb" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="vendaPhsb" class="Bean.VendaPhsb" fetch="select">
+            <column name="fk_id_venda_phsb" not-null="true" />
+        </many-to-one>
+        <many-to-one name="produtoPhsb" class="Bean.ProdutoPhsb" fetch="select">
+            <column name="fk_id_produto_phsb" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>
