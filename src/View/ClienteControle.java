@@ -11,7 +11,7 @@ import javax.swing.table.AbstractTableModel;
 
 /**
  *
- * @author Bruna Lopes Freitas
+ *
  */
 public class ClienteControle extends AbstractTableModel {
     
