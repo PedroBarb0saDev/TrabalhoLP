@@ -3,58 +3,57 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view;
+package View;
 
-import bean.UsuarioPhsb;
+import bean.ProdutoPhsb;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
 
-public class UsuarioControle extends AbstractTableModel{//classe Usuario Controle
-     private List lista;//var
+public class ProdutoControle extends AbstractTableModel{
+     private List lista;
     
     public void setList(List lista) {
         this.lista = lista;
-        // Método=> recebe lista como argumento = a var lista
-       // this.fireTableDataChanged();
-       // this.fireTableDataChanged();
+        this.fireTableDataChanged();
         
     }
     
-    public UsuarioPhsb getBean(int linha) {
-        return (UsuarioPhsb) lista.get(linha);
-        
+    public ProdutoPhsb getBean(int linha) {
+        return (ProdutoPhsb) lista.get(linha);
+        //M.P R.NúmLinha 
+          
     }
     
     @Override
     public int getRowCount() {
         return lista.size();
-        //retorna o número de linhas da tabela
+       
     }
 
     @Override
     public int getColumnCount() {
         return 4;
-        //número de colunas 
+        
     }
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        //retorna o valor a ser exibido em uma célula específica da tabela
-        UsuarioPhsb usuario = (UsuarioPhsb) lista.get(rowIndex);
-        // número da linha (rowIndex) 
+        
+        ProdutoPhsb produtoPhsb = (ProdutoPhsb) lista.get(rowIndex);
+         
         if (columnIndex == 0) {
-       // número da coluna (columnIndex)
-            return usuario.getIdUsuarioPhsb();
+       
+            return produtoPhsb.getIdProdutoPhsb();
         }
         if (columnIndex == 1) {
-            return usuario.getNomePhsb();
+            return produtoPhsb.getNomePhsb();
         }
         if (columnIndex == 2) {
-            return usuario.getApelidoPhsb();
+            return produtoPhsb.getTipoPhsb();
         }
         if (columnIndex == 3) {
-            return usuario.getCpfPhsb();
+            return produtoPhsb.getValorPhsb();
         }
         return "";
     }
@@ -68,13 +67,11 @@ public class UsuarioControle extends AbstractTableModel{//classe Usuario Control
             return "Nome";
         }
         if (columnIndex == 2) {
-            return "Apelido";
+            return "Tipo";
         }
         if (columnIndex == 3) {
-            return "CPF";
+            return "Valor";
         }
         return "";
     }
 }
-
-    

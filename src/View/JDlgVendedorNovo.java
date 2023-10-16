@@ -5,20 +5,40 @@
  */
 package View;
 
+import dao.Vendedor_DAO;
+import bean.VendedorPhsb;
+
+
+import java.util.List;
+import javax.swing.JTable;
 import tools.Util;
+
 
 /**
  *
  * @author u09219761190
  */
-public class JDlgClienteNovo extends javax.swing.JDialog {
-JDlgClienteNovoIA jDlgClienteNovoIA;
+public class JDlgVendedorNovo extends javax.swing.JDialog {
+     boolean incluindo;
+ Vendedor_DAO vendedor_DAO;
+    VendedorPhsb vendedorPhsb;
+    VendedorControle vendedorControle;
+    private JDlgVendedorNovoIA jDlgVendedorNovoIA;
     /**
-     * Creates new form JDlgCliente
+     * Creates new form JDlgVendedor
      */
-    public JDlgClienteNovo(java.awt.Frame parent, boolean modal) {
+    public JDlgVendedorNovo(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+          setTitle("Cadastro Vendedor");
+        setLocationRelativeTo(null);
+        
+         jDlgVendedorNovoIA = new JDlgVendedorNovoIA(null, true);
+        vendedorControle = new VendedorControle();
+        vendedor_DAO = new Vendedor_DAO();
+        List lista = vendedor_DAO.listALL();
+        vendedorControle.setList(lista);
+        jTablel.setModel(vendedorControle);
     }
 
     /**
@@ -31,15 +51,15 @@ JDlgClienteNovoIA jDlgClienteNovoIA;
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jLayeredPane1 = new javax.swing.JLayeredPane();
+        jTablel = new javax.swing.JTable();
+        jPanel1 = new javax.swing.JPanel();
         jBtnIncluir = new javax.swing.JButton();
         jBtnAlterar = new javax.swing.JButton();
         jBtnExcluir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTablel.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -50,51 +70,50 @@ JDlgClienteNovoIA jDlgClienteNovoIA;
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTablel);
 
-        jLayeredPane1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jLayeredPane1.setLayout(new java.awt.FlowLayout());
+        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
+        jBtnIncluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/incluir_1.png"))); // NOI18N
         jBtnIncluir.setText("Incluir");
         jBtnIncluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnIncluirActionPerformed(evt);
             }
         });
-        jLayeredPane1.add(jBtnIncluir);
+        jPanel1.add(jBtnIncluir);
 
+        jBtnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/alterar.png"))); // NOI18N
         jBtnAlterar.setText("Alterar");
         jBtnAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnAlterarActionPerformed(evt);
             }
         });
-        jLayeredPane1.add(jBtnAlterar);
+        jPanel1.add(jBtnAlterar);
 
+        jBtnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/Excluir_1.png"))); // NOI18N
         jBtnExcluir.setText("Excluir");
         jBtnExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBtnExcluirActionPerformed(evt);
             }
         });
-        jLayeredPane1.add(jBtnExcluir);
+        jPanel1.add(jBtnExcluir);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLayeredPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 555, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -102,21 +121,40 @@ JDlgClienteNovoIA jDlgClienteNovoIA;
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
         // TODO add your handling code here:
-        jDlgClienteNovoIA.setTitle("Inclusão");
-        jDlgClienteNovoIA.setVisible(true);
+        jDlgVendedorNovoIA.setTitle("Inclusão");
+
+        jDlgVendedorNovoIA.setVisible(true);
+        List lista = vendedor_DAO.listALL();
+        vendedorControle.setList(lista);
+        
+        
+        
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
         // TODO add your handling code here:
-        jDlgClienteNovoIA.setTitle("Alteração");
-        jDlgClienteNovoIA.setVisible(true);
+        jDlgVendedorNovoIA.setTitle("Alteração");
+        int rowSel = jTablel.getSelectedRow();
+        VendedorPhsb vendedorPhsb =  vendedorControle.getBean(rowSel);
+        jDlgVendedorNovoIA.beanView(vendedorPhsb);
+
+        jDlgVendedorNovoIA.setVisible(true);
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
         // TODO add your handling code here:
-        if(Util.pergunta("pergunta") == true){
-            this.dispose();
+        if (Util.pergunta("Deseja execluir o registro") == true ) {
+            int sel = jTablel.getSelectedRow();
+            vendedorPhsb = vendedorControle.getBean(sel);
+            vendedor_DAO.delete(vendedorPhsb);
+            //atualizar a lista no jtable
+            List lista =vendedor_DAO.listALL();
+            vendedorControle.setList(lista);
+
+        } else {
+            Util.mensagem("Exclusão cancelada");
         }
+
     }//GEN-LAST:event_jBtnExcluirActionPerformed
 
     /**
@@ -136,13 +174,13 @@ JDlgClienteNovoIA jDlgClienteNovoIA;
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JDlgClienteNovo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgVendedorNovo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JDlgClienteNovo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgVendedorNovo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JDlgClienteNovo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgVendedorNovo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JDlgClienteNovo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDlgVendedorNovo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -150,7 +188,7 @@ JDlgClienteNovoIA jDlgClienteNovoIA;
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                JDlgClienteNovo dialog = new JDlgClienteNovo(new javax.swing.JFrame(), true);
+                JDlgVendedorNovo dialog = new JDlgVendedorNovo(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -166,8 +204,8 @@ JDlgClienteNovoIA jDlgClienteNovoIA;
     private javax.swing.JButton jBtnAlterar;
     private javax.swing.JButton jBtnExcluir;
     private javax.swing.JButton jBtnIncluir;
-    private javax.swing.JLayeredPane jLayeredPane1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTablel;
     // End of variables declaration//GEN-END:variables
 }
