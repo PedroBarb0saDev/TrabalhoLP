@@ -1,2 +1,2 @@
-view.UsuariosControle
 view.UsuarioControle
+view.UsuarioControlle

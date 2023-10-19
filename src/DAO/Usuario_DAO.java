@@ -5,13 +5,14 @@
  */
 package dao;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 
 /**
  *
- * @author u05682855140
+ * @author 
  */
 public class Usuario_DAO extends DAO_Abstract{
 
@@ -50,17 +51,35 @@ public class Usuario_DAO extends DAO_Abstract{
         return Lista.get(0);
     }
 
+   
+    
+    
+    public Usuario_DAO Login(String apelidophsb, String senhaphsb) {
+    try {
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(Usuario_DAO.class);
+        criteria.add(Restrictions.eq("apelidophsb", apelidophsb));
+        criteria.add(Restrictions.eq("senhaphsb", senhaphsb));
+
+        Usuario_DAO usuario_DAO = (Usuario_DAO) criteria.uniqueResult();
+
+        session.getTransaction().commit();
+
+        return usuario_DAO;
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+
+    return null;
+}
+
     @Override
     public List listALL() {
         session.beginTransaction();
-        Criteria criteria = session.createCriteria(Usuario_DAO.class);
-        List Lista = criteria.list();
-        session.getTransaction().commit();
-        return Lista;
-    }
-    
-    public static void main(String[] args) {
-        Usuario_DAO usuario_DAO = new Usuario_DAO();
+       Criteria criteria = session.createCriteria(Usuario_DAO.class);
+       List lista = criteria.list();
+       session.getTransaction().commit();
+       return (ArrayList) lista;
     }
     
 }
