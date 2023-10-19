@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package View;
-
+import View.JFrmLogin;
 /**
  *
  * @author u09219761190
@@ -18,6 +18,12 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         initComponents();
           setTitle("Tela de Menu");
         setLocationRelativeTo(null);
+            JFrmLogin jFrmLogin = new JFrmLogin();
+      jFrmLogin.dispose();
+    }
+
+    JFrmPrincipal(JFrmLogin aThis, boolean b) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**

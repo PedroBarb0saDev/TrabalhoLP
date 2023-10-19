@@ -21,7 +21,7 @@ import tools.Util;
  */
 public class JDlgUsuario extends javax.swing.JDialog {
 
-    boolean incluindo;
+   private boolean incluindo;
     MaskFormatter mascaraCpf;
     MaskFormatter mascaraDataNascimento;
     //variaveis usadas para formatação de caompos formatados

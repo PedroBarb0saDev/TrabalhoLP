@@ -19,7 +19,7 @@ import tools.Util;
  */
 public class JDlgCliente extends javax.swing.JDialog {
 
-     boolean incluindo;
+   private boolean incluindo;
     private ClientePhsb clientePhsb;
     private Cliente_DAO cliente_DAO;
     
@@ -40,7 +40,7 @@ public class JDlgCliente extends javax.swing.JDialog {
         cliente_DAO = new Cliente_DAO();
         
         
-         Util.habilitar(false, jTxtCodigo, jTxtRg, jFrmtData_cadastro,jFrmtData_nascimento, 
+         Util.habilitar(false, jTxtCodigoId, jTxtRg, jFrmtData_cadastro,jFrmtData_nascimento, 
                jTxtEndereco, jTxtUltima_compra, jTxtCidade, jTxtSexo, jTxtEmail, jBtnCancelar, jBtnConfirmar);
         Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
         
@@ -65,7 +65,8 @@ public class JDlgCliente extends javax.swing.JDialog {
     
       public ClientePhsb viewBean() {
         ClientePhsb clientePhsb = new ClientePhsb();
-//        clientePhsb.setIdClientePhsb(Util.intStr(jTxtCodigo.getText()));;
+         int id = Integer.valueOf( jTxtCodigoId.getText());
+      clientePhsb.setIdClientePhsb(id );
         clientePhsb.setApelidoPhsb(jTxtApelido1.getText());
         clientePhsb.setCepPhsb(jTxtCep.getText());
         clientePhsb.setCidadePhsb(jTxtCidade.getText());   
@@ -89,7 +90,7 @@ public class JDlgCliente extends javax.swing.JDialog {
        
         public void beanView( ClientePhsb clientePhsb) {
         String cad = String.valueOf(clientePhsb.getIdClientePhsb());
-        jTxtCodigo.setText(cad);        
+        jTxtCodigoId.setText(cad);        
      clientePhsb.setApelidoPhsb(jTxtApelido1.getText());
         clientePhsb.setCepPhsb(jTxtCep.getText());
         clientePhsb.setCidadePhsb(jTxtCidade.getText());   
@@ -155,7 +156,7 @@ public class JDlgCliente extends javax.swing.JDialog {
         jBtnIncluir = new javax.swing.JButton();
         jBtnAlterar = new javax.swing.JButton();
         jBtnExcluir = new javax.swing.JButton();
-        jTxtCodigo = new javax.swing.JTextField();
+        jTxtCodigoId = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -337,21 +338,21 @@ public class JDlgCliente extends javax.swing.JDialog {
                                 .addGap(26, 26, 26)
                                 .addComponent(jLabel16)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTxtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jTxtCodigoId, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(99, 99, 99)
+                        .addGap(22, 22, 22)
                         .addComponent(jBtnIncluir, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jBtnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jBtnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jBtnConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jBtnConfirmar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jBtnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(jBtnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(164, Short.MAX_VALUE))
+                .addContainerGap(177, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -383,7 +384,7 @@ public class JDlgCliente extends javax.swing.JDialog {
                                         .addContainerGap()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                             .addComponent(jLabel16)
-                                            .addComponent(jTxtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                            .addComponent(jTxtCodigoId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -438,13 +439,14 @@ public class JDlgCliente extends javax.swing.JDialog {
                         .addComponent(jTxtTelefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jBtnConfirmar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jBtnIncluir, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jBtnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jBtnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jBtnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jBtnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(jBtnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jBtnConfirmar))
+                .addContainerGap())
         );
 
         pack();
@@ -468,11 +470,11 @@ public class JDlgCliente extends javax.swing.JDialog {
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
         // TODO add your handling code here:
-        Util.habilitar(false, jTxtCodigo, jFrmtData_cadastro, jTxtSexo,jTxtRg, jTxtNome,
+        Util.habilitar(false, jTxtCodigoId, jFrmtData_cadastro, jTxtSexo,jTxtRg, jTxtNome,
             jTxtEndereco, jTxtEstado, jTxtCidade, jTxtCidade, jTxtEmail, jBtnCancelar, jBtnConfirmar);
         Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
 
-        Util.limparCampos(jTxtCodigo, jTxtCidade, jFrmtData_cadastro,jFrmtData_emissao_RG, jTxtRg,  jTxtCodigo, jFrmtData_cadastro, jTxtSexo,jTxtRg, jTxtNome,
+        Util.limparCampos(jTxtCodigoId, jTxtCidade, jFrmtData_cadastro,jFrmtData_emissao_RG, jTxtRg,  jTxtCodigoId, jFrmtData_cadastro, jTxtSexo,jTxtRg, jTxtNome,
             jTxtEndereco, jTxtEstado, jTxtCidade, jTxtCidade, jTxtEmail, jTxtEmail);
 
         Util.mensagem("Operação cancelada");
@@ -488,13 +490,13 @@ public class JDlgCliente extends javax.swing.JDialog {
             cliente_DAO.update(clientePhsb);
         }
 
-        Util.habilitar(true, jTxtCodigo,  jTxtCodigo, jFrmtData_cadastro, jTxtSexo,jTxtRg, jTxtNome, jTxtEndereco, jTxtEstado, jTxtCidade, jTxtCidade, jTxtEmail, jBtnCancelar, jBtnConfirmar);
+        Util.habilitar(true, jTxtCodigoId,  jTxtCodigoId, jFrmtData_cadastro, jTxtSexo,jTxtRg, jTxtNome, jTxtEndereco, jTxtEstado, jTxtCidade, jTxtCidade, jTxtEmail, jBtnCancelar, jBtnConfirmar);
         Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
 
-        Util.limparCampos(jTxtCodigo,  jTxtCodigo, jFrmtData_cadastro, jTxtSexo,jTxtRg, jTxtNome,
+        Util.limparCampos(jTxtCodigoId,  jTxtCodigoId, jFrmtData_cadastro, jTxtSexo,jTxtRg, jTxtNome,
             jTxtEndereco, jTxtEstado, jTxtCidade, jTxtCidade, jTxtEmail, jTxtEmail);
 
-        Util.habilitar(false, jTxtCodigo,  jTxtCodigo, jFrmtData_cadastro, jTxtSexo,jTxtRg, jTxtNome,
+        Util.habilitar(false, jTxtCodigoId,  jTxtCodigoId, jFrmtData_cadastro, jTxtSexo,jTxtRg, jTxtNome,
             jTxtEndereco, jTxtEstado, jTxtCidade, jTxtCidade, jTxtEmail,jTxtEmail, jBtnCancelar, jBtnConfirmar);
         Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
@@ -505,18 +507,18 @@ public class JDlgCliente extends javax.swing.JDialog {
         jDlgClientePesquisa.setTelaAnterior(this);
         jDlgClientePesquisa.setVisible(true);
 
-        Util.habilitar(false,jTxtCodigo,  jTxtCodigo, jFrmtData_cadastro, jTxtSexo,jTxtRg, jTxtNome,
+        Util.habilitar(false,jTxtCodigoId,  jTxtCodigoId, jFrmtData_cadastro, jTxtSexo,jTxtRg, jTxtNome,
             jTxtEndereco, jTxtEstado, jTxtCidade, jTxtCidade, jTxtEmail,jTxtEmail,  jBtnConfirmar, jBtnIncluir);
         Util.habilitar(true, jBtnAlterar, jBtnExcluir, jBtnPesquisar, jBtnCancelar);
     }//GEN-LAST:event_jBtnPesquisarActionPerformed
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
         // TODO add your handling code here:
-        Util.habilitar(true, jTxtCodigo,  jTxtCodigo, jFrmtData_cadastro, jTxtSexo,jTxtRg, jTxtNome,
+        Util.habilitar(true, jTxtCodigoId,  jTxtCodigoId, jFrmtData_cadastro, jTxtSexo,jTxtRg, jTxtNome,
             jTxtEndereco, jTxtEstado, jTxtCidade, jTxtCidade, jTxtEmail,jTxtEmail, jBtnCancelar, jBtnConfirmar);
         Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
 
-        Util.limparCampos(jTxtCodigo, jTxtCodigo,  jTxtCodigo, jFrmtData_cadastro, jTxtSexo,jTxtRg, jTxtNome,
+        Util.limparCampos(jTxtCodigoId, jTxtCodigoId,  jTxtCodigoId, jFrmtData_cadastro, jTxtSexo,jTxtRg, jTxtNome,
             jTxtEndereco, jTxtEstado, jTxtCidade, jTxtCidade, jTxtEmail,jTxtEmail);
 
         incluindo = true;
@@ -524,7 +526,7 @@ public class JDlgCliente extends javax.swing.JDialog {
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
         // TODO add your handling code here:
-        Util.habilitar(true, jTxtCodigo,jTxtCodigo,  jTxtCodigo, jFrmtData_cadastro, jTxtSexo,jTxtRg, jTxtNome,
+        Util.habilitar(true, jTxtCodigoId,jTxtCodigoId,  jTxtCodigoId, jFrmtData_cadastro, jTxtSexo,jTxtRg, jTxtNome,
             jTxtEndereco, jTxtEstado, jTxtCidade, jTxtCidade, jTxtEmail,jTxtEmail, jBtnCancelar, jBtnConfirmar);
         Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
         incluindo = false;
@@ -539,8 +541,8 @@ public class JDlgCliente extends javax.swing.JDialog {
         } else {
             Util.mensagem("Exclusão cancelada");
         }
-        Util.limparCampos(jTxtCodigo,   jTxtCodigo, jFrmtData_cadastro, jTxtSexo,jTxtRg, jTxtNome, jTxtEndereco, jTxtEstado, jTxtCidade, jTxtCidade, jTxtEmail,jTxtEmail, jTxtEmail);
-        Util.habilitar(false, jTxtCodigo, jTxtCodigo,  jTxtCodigo, jFrmtData_cadastro, jTxtSexo,jTxtRg, jTxtNome,
+        Util.limparCampos(jTxtCodigoId,   jTxtCodigoId, jFrmtData_cadastro, jTxtSexo,jTxtRg, jTxtNome, jTxtEndereco, jTxtEstado, jTxtCidade, jTxtCidade, jTxtEmail,jTxtEmail, jTxtEmail);
+        Util.habilitar(false, jTxtCodigoId, jTxtCodigoId,  jTxtCodigoId, jFrmtData_cadastro, jTxtSexo,jTxtRg, jTxtNome,
             jTxtEndereco, jTxtEstado, jTxtCidade, jTxtCidade, jTxtEmail,jTxtEmail, jBtnCancelar, jBtnConfirmar);
         Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
     }//GEN-LAST:event_jBtnExcluirActionPerformed
@@ -618,7 +620,7 @@ public class JDlgCliente extends javax.swing.JDialog {
     private javax.swing.JTextField jTxtApelido1;
     private javax.swing.JTextField jTxtCep;
     private javax.swing.JTextField jTxtCidade;
-    private javax.swing.JTextField jTxtCodigo;
+    private javax.swing.JTextField jTxtCodigoId;
     private javax.swing.JTextField jTxtEmail;
     private javax.swing.JTextField jTxtEndereco;
     private javax.swing.JTextField jTxtEstado;

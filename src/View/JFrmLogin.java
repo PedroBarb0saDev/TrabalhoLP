@@ -7,6 +7,7 @@ package View;
 
 import dao.Usuario_DAO;
 import javax.swing.JOptionPane;
+import View.JFrmLogin;
 
 /**
  *
@@ -89,18 +90,19 @@ public class JFrmLogin extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel3)
-                .addGap(47, 47, 47)
+                .addGap(13, 13, 13)
                 .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jTxtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPwfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBtnEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBtnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jBtnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -108,29 +110,39 @@ public class JFrmLogin extends javax.swing.JFrame {
 
     private void jBtnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnEntrarActionPerformed
         // TODO add your handling code here:
-        String apelidophsb = jTxtUsuario.getText();
-        String senhaphsb = new String(jPwfSenha.getPassword());
+//        String apelidophsb = jTxtUsuario.getText();
+//        String senhaphsb = new String(jPwfSenha.getPassword());
+//
+//        Usuario_DAO usuario_DAO = new Usuario_DAO();
+//
+//        if (usuario_DAO.Login(apelidophsb, senhaphsb) != null) {
+//
+//            JOptionPane.showMessageDialog(null, "Usuário logado com sucesso!");
+//
+//            JFrmPrincipal jFrmMenuPrincipal = new JFrmPrincipal();
+//            jFrmMenuPrincipal.setVisible(true);
+//
+//            tentativas = 0;
+//            setVisible(false);
+//        } else {
+//            tentativas++;
+//            JOptionPane.showMessageDialog(null, "Usuário ou senha inválidos" + tentativas + "/2");
+//
+//            if (tentativas >= 2) {
+//                JOptionPane.showMessageDialog(null, "Limte de tentativas Excedido.");
+//                System.exit(0);
+//            }
+//        }
 
-        Usuario_DAO usuario_DAO = new Usuario_DAO();
-
-        if (usuario_DAO.Login(apelidophsb, senhaphsb) != null) {
-
-            JOptionPane.showMessageDialog(null, "Usuário logado com sucesso!");
-
-            JFrmPrincipal jFrmMenuPrincipal = new JFrmPrincipal();
-            jFrmMenuPrincipal.setVisible(true);
-
-            tentativas = 0;
-            setVisible(false);
-        } else {
-            tentativas++;
-            JOptionPane.showMessageDialog(null, "Usuário ou senha inválidos" + tentativas + "/2");
-
-            if (tentativas >= 2) {
-                JOptionPane.showMessageDialog(null, "Limte de tentativas Excedido.");
-                System.exit(0);
-            }
+    if (jPwfSenha.getText().equals("senha123") && jTxtUsuario.getText().equals("barbosinha")   ) {
+            this.dispose();//mesma coisa do setvisible
+            JOptionPane.showMessageDialog(this,"Acessso autorizado","ACESSADO", JOptionPane.INFORMATION_MESSAGE);
+            //JOptionPane.showMessageDialog(null, "Dados corretos");
+        }  else {
+            JOptionPane.showMessageDialog(this,"senha ou usuario está incorreto","atenção", JOptionPane.ERROR_MESSAGE);
         }
+JFrmPrincipal jFrmPrincipal  = new JFrmPrincipal();
+
 
     }//GEN-LAST:event_jBtnEntrarActionPerformed
 
