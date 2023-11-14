@@ -59,5 +59,37 @@ public class Cliente_DAO extends DAO_Abstract{
         session.getTransaction().commit();
         return Lista;
     }
+    
+      public List listNome(String nome) {
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(ClientePhsb.class);
+        criteria.add(Restrictions.like("nome", "%" + nome + "%"));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        return lista;
+
+    }
+
+    public List listCpf(String cpf) {
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(ClientePhsb.class);
+        criteria.add(Restrictions.like("cpf", "%" + cpf + "%"));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        return lista;
+
+    }
+
+    public List listNomeCpf(String nome, String cpf) {
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(ClientePhsb.class);
+        criteria.add(Restrictions.like("nome", "%" + nome + "%"));
+        criteria.add(Restrictions.like("cpf", "%" + cpf + "%"));
+        List lista = criteria.list();
+        session.getTransaction().commit();
+        return lista;
+
+    }
+
 
 }

@@ -3,7 +3,6 @@ package bean;
 
 
 import java.util.Date;
-import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,7 +10,6 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -30,7 +28,7 @@ public class VendaPhsb  implements java.io.Serializable {
      private ClientePhsb clientePhsb;
      private VendedorPhsb vendedorPhsb;
      private Date dataPhsb;
-     private Integer valorTotalPhsb;
+     private int valorTotalPhsb;
 
 
     public VendaPhsb() {
@@ -42,7 +40,7 @@ public class VendaPhsb  implements java.io.Serializable {
         this.clientePhsb = clientePhsb;
         this.vendedorPhsb = vendedorPhsb;
     }
-    public VendaPhsb(int idVendaPhsb, ClientePhsb clientePhsb, VendedorPhsb vendedorPhsb, Date dataPhsb, Integer valorTotalPhsb, Set vendaProdutoPhsbs) {
+    public VendaPhsb(int idVendaPhsb, ClientePhsb clientePhsb, VendedorPhsb vendedorPhsb, Date dataPhsb, int valorTotalPhsb, Set vendaProdutoPhsbs) {
        this.idVendaPhsb = idVendaPhsb;
        this.clientePhsb = clientePhsb;
        this.vendedorPhsb = vendedorPhsb;
@@ -95,11 +93,11 @@ public class VendaPhsb  implements java.io.Serializable {
 
     
     @Column(name="valor_total_PHSB")
-    public Integer getValorTotalPhsb() {
+    public int getValorTotalPhsb() {
         return this.valorTotalPhsb;
     }
     
-    public void setValorTotalPhsb(Integer valorTotalPhsb) {
+    public void setValorTotalPhsb(int valorTotalPhsb) {
         this.valorTotalPhsb = valorTotalPhsb;
     }
 

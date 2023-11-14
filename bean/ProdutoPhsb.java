@@ -26,7 +26,7 @@ public class ProdutoPhsb  implements java.io.Serializable {
      private int idProdutoPhsb;
      private VendedorPhsb vendedorPhsb;
      private String tipoPhsb;
-     private Integer valorPhsb;
+     private int valorPhsb;
      private String nomePhsb;
 
 
@@ -38,7 +38,7 @@ public class ProdutoPhsb  implements java.io.Serializable {
         this.idProdutoPhsb = idProdutoPhsb;
         this.vendedorPhsb = vendedorPhsb;
     }
-    public ProdutoPhsb(int idProdutoPhsb, VendedorPhsb vendedorPhsb, String tipoPhsb, Integer valorPhsb, String nomePhsb, Set vendaProdutoPhsbs) {
+    public ProdutoPhsb(int idProdutoPhsb, VendedorPhsb vendedorPhsb, String tipoPhsb, int valorPhsb, String nomePhsb, Set vendaProdutoPhsbs) {
        this.idProdutoPhsb = idProdutoPhsb;
        this.vendedorPhsb = vendedorPhsb;
        this.tipoPhsb = tipoPhsb;
@@ -81,11 +81,11 @@ public class ProdutoPhsb  implements java.io.Serializable {
 
     
     @Column(name="valor_phsb")
-    public Integer getValorPhsb() {
+    public int getValorPhsb() {
         return this.valorPhsb;
     }
     
-    public void setValorPhsb(Integer valorPhsb) {
+    public void setValorPhsb(int valorPhsb) {
         this.valorPhsb = valorPhsb;
     }
 
@@ -100,7 +100,11 @@ public class ProdutoPhsb  implements java.io.Serializable {
     }
 
 
-
+     @Override
+     public  String toString(){
+         return getNomePhsb();
+    
+}
 
 }
 

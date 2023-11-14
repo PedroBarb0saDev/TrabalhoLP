@@ -23,7 +23,7 @@ public class VendaProdutoPhsb  implements java.io.Serializable {
      private int idVendaProdutoPhsb;
      private VendaPhsb vendaPhsb;
      private ProdutoPhsb produtoPhsb;
-     private Integer valorUnitario;
+     private int valorUnitario;
 
     public VendaProdutoPhsb() {
     }
@@ -34,7 +34,7 @@ public class VendaProdutoPhsb  implements java.io.Serializable {
         this.vendaPhsb = vendaPhsb;
         this.produtoPhsb = produtoPhsb;
     }
-    public VendaProdutoPhsb(int idVendaProdutoPhsb, VendaPhsb vendaPhsb, ProdutoPhsb produtoPhsb, Integer valorUnitario) {
+    public VendaProdutoPhsb(int idVendaProdutoPhsb, VendaPhsb vendaPhsb, ProdutoPhsb produtoPhsb, int valorUnitario) {
        this.idVendaProdutoPhsb = idVendaProdutoPhsb;
        this.vendaPhsb = vendaPhsb;
        this.produtoPhsb = produtoPhsb;

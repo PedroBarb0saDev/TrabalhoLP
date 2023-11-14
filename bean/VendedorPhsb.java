@@ -1,13 +1,10 @@
 package bean;
 // Generated 19/10/2023 14:35:35 by Hibernate Tools 4.3.1
 
-import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -102,5 +99,10 @@ public class VendedorPhsb implements java.io.Serializable {
         }
         return false;
     }
-
+    
+//        @Override
+//     public String toString(){
+//         return getNomePhsb();
+//    
+//}
 }
