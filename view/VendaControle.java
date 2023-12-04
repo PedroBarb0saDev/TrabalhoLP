@@ -47,19 +47,19 @@ public class VendaControle extends AbstractTableModel{
 
         if (columnIndex == 0) {
 
-            return vendaPhsb.getIdVendaPhsb();
+            return vendaPhsb.getIdvendaPhsb();
         }
         if (columnIndex == 1) {
             return vendaPhsb.getDataPhsb();
         }
         if (columnIndex == 2) {
-            return vendaPhsb.getValorTotalPhsb();
+            return vendaPhsb.getValortotalPhsb();
         }
         if (columnIndex == 3) {
             return vendaPhsb.getClientePhsb();
         }
         if (columnIndex == 4) {
-            return vendaPhsb.getVendedorPhsb();
+            return vendaPhsb.getFkVendedorPhsb();
         }
         
         return "";
@@ -78,6 +78,9 @@ public class VendaControle extends AbstractTableModel{
         }
         if (columnIndex == 3) {
             return "Cliente";
+        }
+        if (columnIndex == 4) {
+            return "Vendedor";
         }
         return "";
     }

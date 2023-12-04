@@ -123,8 +123,8 @@ Usuario_DAO usuario_DAO = new Usuario_DAO();
 
             JOptionPane.showMessageDialog(null, "Usuário logado com sucesso!");
 
-        JFrmToolBar jFrmToolBar = new JFrmToolBar();
-        jFrmToolBar.setVisible(true);
+        JFrmPrincipal jFrmPrincipal = new JFrmPrincipal();
+        jFrmPrincipal.setVisible(true);
 
         tentativas = 0;
         setVisible(false);

@@ -33,6 +33,13 @@ public class JFrmPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jBtnSair = new javax.swing.JButton();
+        jToolBar1 = new javax.swing.JToolBar();
+        jBtnUsuariosTool = new javax.swing.JButton();
+        jBtnClienteTool = new javax.swing.JButton();
+        jBtnProdutoTool = new javax.swing.JButton();
+        jBtnVendedorTool = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         jMnuUsuario2 = new javax.swing.JMenuItem();
@@ -44,6 +51,84 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         jMnuVenda_produtor = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jBtnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/door_in.png"))); // NOI18N
+        jBtnSair.setText("Sair");
+        jBtnSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnSairActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(313, Short.MAX_VALUE)
+                .addComponent(jBtnSair)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jBtnSair)
+                .addContainerGap())
+        );
+
+        jToolBar1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jToolBar1.setRollover(true);
+
+        jBtnUsuariosTool.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/group.png"))); // NOI18N
+        jBtnUsuariosTool.setText("Usuarios");
+        jBtnUsuariosTool.setFocusable(false);
+        jBtnUsuariosTool.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBtnUsuariosTool.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jBtnUsuariosTool.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnUsuariosToolActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jBtnUsuariosTool);
+
+        jBtnClienteTool.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/cliente.png"))); // NOI18N
+        jBtnClienteTool.setText("Cliente");
+        jBtnClienteTool.setFocusable(false);
+        jBtnClienteTool.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBtnClienteTool.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jBtnClienteTool.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnClienteToolActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jBtnClienteTool);
+
+        jBtnProdutoTool.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/cart_put.png"))); // NOI18N
+        jBtnProdutoTool.setText("Produto");
+        jBtnProdutoTool.setFocusable(false);
+        jBtnProdutoTool.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBtnProdutoTool.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jBtnProdutoTool.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnProdutoToolActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jBtnProdutoTool);
+
+        jBtnVendedorTool.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/icons8-fornecedor-30.png"))); // NOI18N
+        jBtnVendedorTool.setText("Vendedor");
+        jBtnVendedorTool.setFocusable(false);
+        jBtnVendedorTool.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBtnVendedorTool.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jBtnVendedorTool.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnVendedorToolActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jBtnVendedorTool);
 
         jMenu2.setText("Cadastro");
 
@@ -117,11 +202,15 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jToolBar1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 279, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 167, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -143,8 +232,7 @@ public class JFrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMnuProdutoActionPerformed
 
     private void jMnuVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnuVendaActionPerformed
-        //        JDlgCompra jDlgCompra = new JDlgCompra(null, true);
-        //        jDlgCompra.setVisible(true);
+     
     }//GEN-LAST:event_jMnuVendaActionPerformed
 
     private void jMnuVenda_produtorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnuVenda_produtorActionPerformed
@@ -158,6 +246,35 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         JDlgUsuarioConsulta jDlgUsuarioConsulta = new JDlgUsuarioConsulta(null, true);
         jDlgUsuarioConsulta.setVisible(true);
     }//GEN-LAST:event_jMnConsultasActionPerformed
+
+    private void jBtnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnSairActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jBtnSairActionPerformed
+
+    private void jBtnUsuariosToolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnUsuariosToolActionPerformed
+        // TODO add your handling code here:
+        JDlgUsuario jDlgUsuario = new JDlgUsuario(null, true);
+        jDlgUsuario.setVisible(true);
+    }//GEN-LAST:event_jBtnUsuariosToolActionPerformed
+
+    private void jBtnClienteToolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnClienteToolActionPerformed
+        // TODO add your handling code here:
+        JDlgCliente jDlgCliente = new JDlgCliente(null, true);
+        jDlgCliente.setVisible(true);
+    }//GEN-LAST:event_jBtnClienteToolActionPerformed
+
+    private void jBtnProdutoToolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnProdutoToolActionPerformed
+        // TODO add your handling code here:
+        JDlgProdutoNovo jDlgProduto = new JDlgProdutoNovo(null, true);
+        jDlgProduto.setVisible(true);
+    }//GEN-LAST:event_jBtnProdutoToolActionPerformed
+
+    private void jBtnVendedorToolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnVendedorToolActionPerformed
+        // TODO add your handling code here:
+        JDlgVendedorNovo jDlgVendedorNovo = new JDlgVendedorNovo(null, true);
+        jDlgVendedorNovo.setVisible(true);
+    }//GEN-LAST:event_jBtnVendedorToolActionPerformed
 
     /**
      * @param args the command line arguments
@@ -195,6 +312,11 @@ public class JFrmPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBtnClienteTool;
+    private javax.swing.JButton jBtnProdutoTool;
+    private javax.swing.JButton jBtnSair;
+    private javax.swing.JButton jBtnUsuariosTool;
+    private javax.swing.JButton jBtnVendedorTool;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
@@ -204,5 +326,7 @@ public class JFrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMnuUsuario2;
     private javax.swing.JMenuItem jMnuVenda;
     private javax.swing.JMenuItem jMnuVenda_produtor;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
 }

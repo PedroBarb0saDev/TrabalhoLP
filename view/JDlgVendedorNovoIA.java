@@ -18,6 +18,8 @@ public class JDlgVendedorNovoIA extends javax.swing.JDialog {
 
     Vendedor_DAO vendedor_DAO;
     VendedorControle vendedorControle;
+    JDlgVendedorNovo jDlgVendedorNovo;
+    private boolean incluindo;
 
     public JDlgVendedorNovoIA() {
     }
@@ -40,7 +42,7 @@ public class JDlgVendedorNovoIA extends javax.swing.JDialog {
     public VendedorPhsb viewBean() {
         VendedorPhsb vendedorPhsb = new VendedorPhsb();
         int id = Integer.valueOf(jTxtCodigo.getText());
-        vendedorPhsb.setIdVendedorPhsb(id);
+        vendedorPhsb.setIdvendedorPhsb(id);
         vendedorPhsb.setNomePhsb(jTxtNome.getText());
         vendedorPhsb.setCpfPhsb(jTxtCpf.getText());
         vendedorPhsb.setRgPhsb(jTxtRG.getText());
@@ -51,13 +53,17 @@ public class JDlgVendedorNovoIA extends javax.swing.JDialog {
     }
 
     public void beanView(VendedorPhsb vendedorPhsb) {
-        String cad = String.valueOf(vendedorPhsb.getIdVendedorPhsb());
+        String cad = String.valueOf(vendedorPhsb.getIdvendedorPhsb());
         jTxtCodigo.setText(cad);
         jTxtNome.setText(vendedorPhsb.getNomePhsb());
         jTxtCpf.setText(vendedorPhsb.getCpfPhsb());
 
         jTxtRG.setText(vendedorPhsb.getRgPhsb());
 
+    }
+
+    public void telaAnterior(JDlgVendedorNovo jDlgVendedorNovo) {
+        this.jDlgVendedorNovo = jDlgVendedorNovo;
     }
 
     /**
@@ -183,8 +189,10 @@ public class JDlgVendedorNovoIA extends javax.swing.JDialog {
         Vendedor_DAO vendedor_DAO = new Vendedor_DAO();
         VendedorPhsb vendedorPhsb = viewBean();
         vendedor_DAO.insert(vendedorPhsb);
-     
-      
+//        }
+        List lista = vendedor_DAO.listALL();
+        vendedorControle.setList(lista);
+
         this.dispose();
 
 
@@ -193,7 +201,7 @@ public class JDlgVendedorNovoIA extends javax.swing.JDialog {
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
         // TODO add your handling code here:
 
-      this.dispose();
+        this.dispose();
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     /**

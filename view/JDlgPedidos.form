@@ -31,9 +31,9 @@
                       <Component id="jScrollPane1" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jBtnAlterar_pedidos_produtos" max="32767" attributes="0"/>
-                          <Component id="jBtnExcluir_pedidos_produtos" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jBtnIncluirPedidos_produtos" alignment="0" pref="93" max="32767" attributes="0"/>
+                          <Component id="jBtnAlterarProd" max="32767" attributes="0"/>
+                          <Component id="jBtnExcluirProd" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jBtnIncluirProd" alignment="0" pref="93" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                   </Group>
@@ -96,11 +96,11 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jScrollPane1" min="-2" pref="257" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <Component id="jBtnIncluirPedidos_produtos" min="-2" max="-2" attributes="0"/>
+                      <Component id="jBtnIncluirProd" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                      <Component id="jBtnAlterar_pedidos_produtos" min="-2" max="-2" attributes="0"/>
+                      <Component id="jBtnAlterarProd" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jBtnExcluir_pedidos_produtos" min="-2" pref="32" max="-2" attributes="0"/>
+                      <Component id="jBtnExcluirProd" min="-2" pref="32" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -198,6 +198,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Pesquisar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtnPesquisarActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jBtnAlterar">
           <Properties>
@@ -270,34 +273,34 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="jBtnIncluirPedidos_produtos">
+    <Component class="javax.swing.JButton" name="jBtnIncluirProd">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/IMG/incluir_1.png"/>
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtnIncluirPedidos_produtosActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtnIncluirProdActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jBtnExcluir_pedidos_produtos">
+    <Component class="javax.swing.JButton" name="jBtnExcluirProd">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/IMG/link_delete.png"/>
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtnExcluir_pedidos_produtosActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtnExcluirProdActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jBtnAlterar_pedidos_produtos">
+    <Component class="javax.swing.JButton" name="jBtnAlterarProd">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/IMG/alterar.png"/>
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtnAlterar_pedidos_produtosActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBtnAlterarProdActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
@@ -332,11 +335,6 @@
     <Component class="javax.swing.JFormattedTextField" name="jFormattedTextField1">
     </Component>
     <Component class="javax.swing.JComboBox" name="jComboBox1">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="0"/>
-        </Property>
-      </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>

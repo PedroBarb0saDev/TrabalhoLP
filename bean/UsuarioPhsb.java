@@ -1,5 +1,5 @@
 package bean;
-// Generated 19/10/2023 14:35:35 by Hibernate Tools 4.3.1
+// Generated 01/12/2023 10:35:20 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -20,24 +20,20 @@ import javax.persistence.TemporalType;
 public class UsuarioPhsb  implements java.io.Serializable {
 
 
-     private int idUsuarioPhsb;
+     private int idusuarioPhsb;
      private String nomePhsb;
      private String apelidoPhsb;
      private String cpfPhsb;
      private String senhaPhsb;
      private Date dataNascimentoPhsb;
-     private String nivelPhsb;
+     private int nivelPhsb;
      private String ativoPhsb;
 
     public UsuarioPhsb() {
     }
 
-	
-    public UsuarioPhsb(int idUsuarioPhsb) {
-        this.idUsuarioPhsb = idUsuarioPhsb;
-    }
-    public UsuarioPhsb(int idUsuarioPhsb, String nomePhsb, String apelidoPhsb, String cpfPhsb, String senhaPhsb, Date dataNascimentoPhsb, String nivelPhsb, String ativoPhsb) {
-       this.idUsuarioPhsb = idUsuarioPhsb;
+    public UsuarioPhsb(int idusuarioPhsb, String nomePhsb, String apelidoPhsb, String cpfPhsb, String senhaPhsb, Date dataNascimentoPhsb, int nivelPhsb, String ativoPhsb) {
+       this.idusuarioPhsb = idusuarioPhsb;
        this.nomePhsb = nomePhsb;
        this.apelidoPhsb = apelidoPhsb;
        this.cpfPhsb = cpfPhsb;
@@ -50,17 +46,17 @@ public class UsuarioPhsb  implements java.io.Serializable {
      @Id 
 
     
-    @Column(name="id_usuario_phsb", unique=true, nullable=false)
-    public int getIdUsuarioPhsb() {
-        return this.idUsuarioPhsb;
+    @Column(name="idusuario_phsb", unique=true, nullable=false)
+    public int getIdusuarioPhsb() {
+        return this.idusuarioPhsb;
     }
     
-    public void setIdUsuarioPhsb(int idUsuarioPhsb) {
-        this.idUsuarioPhsb = idUsuarioPhsb;
+    public void setIdusuarioPhsb(int idusuarioPhsb) {
+        this.idusuarioPhsb = idusuarioPhsb;
     }
 
     
-    @Column(name="nome_phsb", length=20)
+    @Column(name="nome_phsb", nullable=false, length=30)
     public String getNomePhsb() {
         return this.nomePhsb;
     }
@@ -70,7 +66,7 @@ public class UsuarioPhsb  implements java.io.Serializable {
     }
 
     
-    @Column(name="apelido_phsb", length=20)
+    @Column(name="apelido_phsb", nullable=false, length=35)
     public String getApelidoPhsb() {
         return this.apelidoPhsb;
     }
@@ -80,7 +76,7 @@ public class UsuarioPhsb  implements java.io.Serializable {
     }
 
     
-    @Column(name="cpf_phsb", length=14)
+    @Column(name="cpf_phsb", nullable=false, length=14)
     public String getCpfPhsb() {
         return this.cpfPhsb;
     }
@@ -90,7 +86,7 @@ public class UsuarioPhsb  implements java.io.Serializable {
     }
 
     
-    @Column(name="senha_phsb", length=8)
+    @Column(name="senha_phsb", nullable=false, length=10)
     public String getSenhaPhsb() {
         return this.senhaPhsb;
     }
@@ -100,7 +96,7 @@ public class UsuarioPhsb  implements java.io.Serializable {
     }
 
     @Temporal(TemporalType.DATE)
-    @Column(name="data_nascimento_phsb", length=10)
+    @Column(name="data_nascimento_phsb", nullable=false, length=10)
     public Date getDataNascimentoPhsb() {
         return this.dataNascimentoPhsb;
     }
@@ -110,17 +106,17 @@ public class UsuarioPhsb  implements java.io.Serializable {
     }
 
     
-    @Column(name="nivel_phsb", length=1)
-    public String getNivelPhsb() {
+    @Column(name="nivel_phsb", nullable=false)
+    public int getNivelPhsb() {
         return this.nivelPhsb;
     }
     
-    public void setNivelPhsb(String nivelPhsb) {
+    public void setNivelPhsb(int nivelPhsb) {
         this.nivelPhsb = nivelPhsb;
     }
 
     
-    @Column(name="ativo_phsb", length=1)
+    @Column(name="ativo_phsb", nullable=false, length=2)
     public String getAtivoPhsb() {
         return this.ativoPhsb;
     }

@@ -44,7 +44,7 @@ public class VendedorControle extends AbstractTableModel{
          
         if (columnIndex == 0) {
        
-            return vendedorPhsb.getIdVendedorPhsb();
+            return vendedorPhsb.getIdvendedorPhsb();
         }
         if (columnIndex == 1) {
             return vendedorPhsb.getNomePhsb();

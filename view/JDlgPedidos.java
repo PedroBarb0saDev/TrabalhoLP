@@ -31,6 +31,7 @@ public class JDlgPedidos extends javax.swing.JDialog {
     public int getselectedRow() {
         return jTable1.getSelectedRow();
     }
+//    public void 
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -50,9 +51,9 @@ public class JDlgPedidos extends javax.swing.JDialog {
         jBtnCancelar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jBtnIncluirPedidos_produtos = new javax.swing.JButton();
-        jBtnExcluir_pedidos_produtos = new javax.swing.JButton();
-        jBtnAlterar_pedidos_produtos = new javax.swing.JButton();
+        jBtnIncluirProd = new javax.swing.JButton();
+        jBtnExcluirProd = new javax.swing.JButton();
+        jBtnAlterarProd = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -94,6 +95,11 @@ public class JDlgPedidos extends javax.swing.JDialog {
 
         jBtnPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/pesquisar_1.png"))); // NOI18N
         jBtnPesquisar.setText("Pesquisar");
+        jBtnPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnPesquisarActionPerformed(evt);
+            }
+        });
 
         jBtnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/gravar.png"))); // NOI18N
         jBtnAlterar.setText("Alterar");
@@ -148,24 +154,24 @@ public class JDlgPedidos extends javax.swing.JDialog {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jBtnIncluirPedidos_produtos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/incluir_1.png"))); // NOI18N
-        jBtnIncluirPedidos_produtos.addActionListener(new java.awt.event.ActionListener() {
+        jBtnIncluirProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/incluir_1.png"))); // NOI18N
+        jBtnIncluirProd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnIncluirPedidos_produtosActionPerformed(evt);
+                jBtnIncluirProdActionPerformed(evt);
             }
         });
 
-        jBtnExcluir_pedidos_produtos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/link_delete.png"))); // NOI18N
-        jBtnExcluir_pedidos_produtos.addActionListener(new java.awt.event.ActionListener() {
+        jBtnExcluirProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/link_delete.png"))); // NOI18N
+        jBtnExcluirProd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnExcluir_pedidos_produtosActionPerformed(evt);
+                jBtnExcluirProdActionPerformed(evt);
             }
         });
 
-        jBtnAlterar_pedidos_produtos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/alterar.png"))); // NOI18N
-        jBtnAlterar_pedidos_produtos.addActionListener(new java.awt.event.ActionListener() {
+        jBtnAlterarProd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/alterar.png"))); // NOI18N
+        jBtnAlterarProd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnAlterar_pedidos_produtosActionPerformed(evt);
+                jBtnAlterarProdActionPerformed(evt);
             }
         });
 
@@ -191,9 +197,9 @@ public class JDlgPedidos extends javax.swing.JDialog {
                         .addComponent(jScrollPane1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jBtnAlterar_pedidos_produtos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jBtnExcluir_pedidos_produtos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jBtnIncluirPedidos_produtos, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE))
+                            .addComponent(jBtnAlterarProd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jBtnExcluirProd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jBtnIncluirProd, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE))
                         .addGap(34, 34, 34))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -241,11 +247,11 @@ public class JDlgPedidos extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jBtnIncluirPedidos_produtos)
+                        .addComponent(jBtnIncluirProd)
                         .addGap(17, 17, 17)
-                        .addComponent(jBtnAlterar_pedidos_produtos)
+                        .addComponent(jBtnAlterarProd)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jBtnExcluir_pedidos_produtos, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jBtnExcluirProd, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -256,6 +262,13 @@ public class JDlgPedidos extends javax.swing.JDialog {
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
         // TODO add your handling code here:
+//            pedidos = viewBean();
+//            if(incluindi == true){
+//                for () {
+//                    
+//                    
+//                }
+//            }
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
@@ -275,7 +288,7 @@ public class JDlgPedidos extends javax.swing.JDialog {
 
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
-    private void jBtnIncluirPedidos_produtosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirPedidos_produtosActionPerformed
+    private void jBtnIncluirProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirProdActionPerformed
         // TODO add your handling code here:
         jDlgPedidos_Produtos.setVisible(true);
         //        JDlgPedidos_Produtos jDlgPedidos_Produtos = new JDlgPedidos_Produtos(null, true);
@@ -283,22 +296,25 @@ public class JDlgPedidos extends javax.swing.JDialog {
 //  jDlPedidos_Produtos.SetvalorUnitario(Util.strDouble(jtxtUnitario.getText()));
 // if (getTitle().toUpperCase().subString(0,1).equals("I")){
 // jDLLGvendas.pedidosProdutosControle.addBean(pedidosControle);
-        // }
+        // } else{
+        //jdlgPedidos.pedidosProdutoControle.updateBean(jdlg.getselectdRowProd(), pedidosProdutos)
+    //}
+    //setVisible(false);
 //        jDlgPedidos_Produtos.setTelaAnterior(this);
 
 
-    }//GEN-LAST:event_jBtnIncluirPedidos_produtosActionPerformed
+    }//GEN-LAST:event_jBtnIncluirProdActionPerformed
 
-    private void jBtnAlterar_pedidos_produtosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterar_pedidos_produtosActionPerformed
+    private void jBtnAlterarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarProdActionPerformed
         // TODO add your handling code here:
 
         jDlgPedidos_Produtos.setVisible(true);
 //        JDlgPedidos_Produtos
 //        
 
-    }//GEN-LAST:event_jBtnAlterar_pedidos_produtosActionPerformed
+    }//GEN-LAST:event_jBtnAlterarProdActionPerformed
 
-    private void jBtnExcluir_pedidos_produtosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluir_pedidos_produtosActionPerformed
+    private void jBtnExcluirProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirProdActionPerformed
         // TODO add your handling code here:
         int linha = jTable1.getSelectedRow();
         if (linha == -1) {
@@ -306,7 +322,13 @@ public class JDlgPedidos extends javax.swing.JDialog {
         } else {
 
         }
-    }//GEN-LAST:event_jBtnExcluir_pedidos_produtosActionPerformed
+    }//GEN-LAST:event_jBtnExcluirProdActionPerformed
+
+    private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed
+        // TODO add your handling code here:
+        
+//        jdlg
+    }//GEN-LAST:event_jBtnPesquisarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -352,13 +374,13 @@ public class JDlgPedidos extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtnAlterar;
-    private javax.swing.JButton jBtnAlterar_pedidos_produtos;
+    private javax.swing.JButton jBtnAlterarProd;
     private javax.swing.JButton jBtnCancelar;
     private javax.swing.JButton jBtnConfirmar;
     private javax.swing.JButton jBtnExcluir;
-    private javax.swing.JButton jBtnExcluir_pedidos_produtos;
+    private javax.swing.JButton jBtnExcluirProd;
     private javax.swing.JButton jBtnIncluir;
-    private javax.swing.JButton jBtnIncluirPedidos_produtos;
+    private javax.swing.JButton jBtnIncluirProd;
     private javax.swing.JButton jBtnPesquisar;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;

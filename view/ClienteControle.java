@@ -40,10 +40,10 @@ public class ClienteControle extends AbstractTableModel {
     public Object getValueAt(int rowIndex, int columnIndex) {
         ClientePhsb clientePhsb = (ClientePhsb) lista.get(rowIndex);
         if (columnIndex == 0) {
-            return clientePhsb.getIdClientePhsb();
+            return clientePhsb.getIdclientePhsb();
         }
         if (columnIndex == 1) {
-            return clientePhsb.getCpfPhs();
+            return clientePhsb.getCepPhsb();
         }
         if (columnIndex == 2) {
             return clientePhsb.getDataCadastroPhsb();

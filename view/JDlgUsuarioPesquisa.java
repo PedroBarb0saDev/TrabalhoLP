@@ -31,9 +31,11 @@ public class JDlgUsuarioPesquisa extends javax.swing.JDialog {
         setTitle("Consultar de usuários");
 
         usuarioControle = new UsuarioControle();
-        Usuario_DAO usuario_DAO = new Usuario_DAO();
+         usuario_DAO = new Usuario_DAO();
         List lista = usuario_DAO.listALL();
         usuarioControle.setList(lista);
+        
+        
         jTable1.setModel(usuarioControle);
     }
 
@@ -119,11 +121,10 @@ public class JDlgUsuarioPesquisa extends javax.swing.JDialog {
         int rowSel = jTable1.getSelectedRow();
         UsuarioPhsb usuarioPhsb = usuarioControle.getBean(rowSel);
         jDlgUsuario.beanView(usuarioPhsb);
-        setVisible(false);
-            jDlgUsuario.setVisible(true);
-        List lista = usuario_DAO.listALL();
         
-        this.dispose();
+      
+        setVisible(false);
+       
 
     }//GEN-LAST:event_jBtnOkActionPerformed
 

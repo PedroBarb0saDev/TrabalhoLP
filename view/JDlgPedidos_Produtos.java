@@ -5,11 +5,17 @@
  */
 package view;
 
+import java.util.List;
+
 /**
  *
  * @author u09219761190
  */
 public class JDlgPedidos_Produtos extends javax.swing.JDialog {
+
+//    JDlgPedidos jDlgPedidos;
+//    int numVendaId;
+//    ProdutosDAO produtosDAO;
 
     /**
      * Creates new form JDlgPedidos_Produtos
@@ -17,10 +23,26 @@ public class JDlgPedidos_Produtos extends javax.swing.JDialog {
     public JDlgPedidos_Produtos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setLocationRelativeTo(null);
         setTitle("Pedidos_Produtos");
+//        setLocationRelativeTo(null);
+//        produtosDAO = new ProdutosDAO();
+//        List lista = (List) produtosDAO.listAll();
+//        for (Object item : lista) {
+//            jCboProdutos.addItem((Produtos) item);
+//        }
+//
     }
 
+//    public void setTelaAnterior(JDlgPedidos jDlgPedidos) {
+//        this.jDlgPedidos = jDlgPedidos;
+////        this.numVendaId = numVendaId;
+//    }
+//     void beanView(PedidosProdutos pedidosProdutos) {
+//        jCboProdutos.setSelectedItem(pedidosProdutos.getProdutos());
+//        jTxtQuantidade.setText(Integer.toString(pedidosProdutos.getQuantidade()));
+//        jTxtUnitario.setText(Double.toString(pedidosProdutos.getValorUnitario()));
+//        //jTxtTotal.setText(Double.toString(vendasProdutos.calculaTotal()));
+//    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -137,21 +159,17 @@ public class JDlgPedidos_Produtos extends javax.swing.JDialog {
 
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
         // TODO add your handling code here:
-//        if (getTitle().equals("Inclusão de Produtos"))) {
-//            
-//        }
 
-        //        JDlgPedidos_Produtos jDlgPedidos_Produtos = new JDlgPedidos_Produtos(null, true);
-        //pedidosProdutos.setProdutos( (Produtos) jcboprodutos.getSelectdItem());
-//        jDlPedidos_Produtos.setQuantidade(Util.strInt(jtxtQuantidade.getText()));
-//  jDlPedidos_Produtos.SetvalorUnitario(Util.strDouble(jtxtUnitario.getText()));
-// if (getTitle().toUpperCase().subString(0,1).equals("I")){
-// jDLLGvendas.pedidosProdutosControle.addBean(pedidosrodutos);
-        //}else{
-        //jdlgPedidos.pedidosCiontrole.updatebean(jdlgPedidos.getSelectedRow(), pedidosProdutos)
-        //}
-        //setVisible(false);
-//        jDlgPedidos_Produtos.setTelaAnterior(this);
+//        PedidosProdutos pedidosProdutos = new PedidosProdutos();
+//        pedidosProdutos.setProdutos((Produtos) jCboProdutos.getSelectedItem());
+//        pedidosProdutos.setQuantidade(Util.strInt(jTxtQuantidade.getText()));
+//        pedidosProdutos.setValorUnitario(Util.strDouble(jTxtUnitario.getText()));
+//        if (getTitle().toUpperCase().substring(0, 1).equals("I")) {
+//            jDlgPedidos.pedidosProdutosControle.addBean(pedidosProdutos);
+//        } else {
+//            jDlgPedidos.pedidosProdutosControle.updateBean(jDlgPedidos.getSelectedRowProd(), pedidosProdutos);
+//        }
+//        setVisible(false
 
     }//GEN-LAST:event_jBtnOkActionPerformed
 

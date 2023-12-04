@@ -115,14 +115,22 @@ public class JDlgClientePesquisa extends javax.swing.JDialog {
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
         // TODO add your handling code here:
 
-        int rowSel = jTable1.getSelectedRow();
-
-        if (rowSel != -1) {
-            ClientePhsb clientePhsb = clienteControle.getBean(rowSel);
-            jDlgCliente.beanView(clientePhsb);
-        } else {
-           System.exit(0);
-        }
+        
+         int rowSel = jTable1.getSelectedRow();
+        
+         ClientePhsb clientePhsb = clienteControle.getBean(rowSel);
+         jDlgCliente.beanView(clientePhsb);
+        
+      
+        setVisible(false);
+//        int rowSel = jTable1.getSelectedRow();
+//
+//        if (rowSel != -1) {
+//            ClientePhsb clientePhsb = clienteControle.getBean(rowSel);
+//            jDlgCliente.beanView(clientePhsb);
+//        } else {
+//           System.exit(0);
+//        }
 
 //  int rowSel = jTable1.getSelectedRow();
 //         ClientePhsb clientePhsb =  clienteControle.getBean(rowSel);

@@ -42,9 +42,9 @@ Contributor(s):
 <hibernate-reverse-engineering>
   <schema-selection match-catalog="db_pedro_barbosa"/>
   <table-filter match-name="produto_phsb"/>
-  <table-filter match-name="venda_produto_phsb"/>
-  <table-filter match-name="Venda_PHSB"/>
-  <table-filter match-name="Vendedor_PHSB"/>
-  <table-filter match-name="Cliente_PHSB"/>
+  <table-filter match-name="vendedor_phsb"/>
   <table-filter match-name="usuario_phsb"/>
+  <table-filter match-name="cliente_phsb"/>
+  <table-filter match-name="venda_produto_phsb"/>
+  <table-filter match-name="venda_phsb"/>
 </hibernate-reverse-engineering>

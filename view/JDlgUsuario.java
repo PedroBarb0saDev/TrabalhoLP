@@ -37,7 +37,7 @@ public class JDlgUsuario extends javax.swing.JDialog {
         initComponents();
         setTitle("Cadastro de Usuário");
         setLocationRelativeTo(null);
-        setVisible(true);
+        //setVisible(true);
         usuario_DAO = new Usuario_DAO();
 
         Util.habilitar(false, jTxtCodigo, jTxtNome, jTxtApelido, jFmtCpf, jFmtDataNascimento,
@@ -60,20 +60,20 @@ public class JDlgUsuario extends javax.swing.JDialog {
     public UsuarioPhsb viewBean() {
         UsuarioPhsb usuariophsb = new UsuarioPhsb();
         int id = Integer.valueOf(jTxtCodigo.getText());
-        usuariophsb.setIdUsuarioPhsb(id);
+        usuariophsb.setIdusuarioPhsb(id);
         usuariophsb.setNomePhsb(jTxtNome.getText());
         usuariophsb.setApelidoPhsb(jTxtApelido.getText());
         usuariophsb.setCpfPhsb(jFmtCpf.getText());
         usuariophsb.setSenhaPhsb(jPwfSenha.getText());
         usuariophsb.setDataNascimentoPhsb(Util.strDate(jFmtDataNascimento.getText()));
-//        usuariophsb.setNivelPhsb(jCboNivel.getSelectedIndex());;;
+        usuariophsb.setNivelPhsb(jCboNivel.getSelectedIndex());
         usuariophsb.setAtivoPhsb(jChbAtivo.isSelected() == true ? "S" : "N");
 
         return usuarioPhsb;
     }
 
     public void beanView(UsuarioPhsb usuarioPhsb) {
-        String cad = String.valueOf(usuarioPhsb.getIdUsuarioPhsb());
+        String cad = String.valueOf(usuarioPhsb.getIdusuarioPhsb());
         jTxtCodigo.setText(cad);
         jTxtNome.setText(usuarioPhsb.getNomePhsb());
         jTxtApelido.setText(usuarioPhsb.getApelidoPhsb());
@@ -81,8 +81,7 @@ public class JDlgUsuario extends javax.swing.JDialog {
         jPwfSenha.setText(usuarioPhsb.getSenhaPhsb());
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         jFmtDataNascimento.setText(formato.format(usuarioPhsb.getDataNascimentoPhsb()));
-
-//        jCboNivel.setSelectedIndex(usuarioPhsb.getNivelPhsb());
+        jCboNivel.setSelectedIndex(usuarioPhsb.getNivelPhsb());
         if (usuarioPhsb.getAtivoPhsb().equals("S") == true) {
             jChbAtivo.setSelected(true);
         } else {
@@ -303,10 +302,11 @@ public class JDlgUsuario extends javax.swing.JDialog {
         // usuario ficou verde é o atributo da varial vel global
 
         if (incluindo == true) {
-
+            Usuario_DAO usuario_DAO = new Usuario_DAO();
             usuarioPhsb = viewBean();
 
             usuario_DAO.insert(usuarioPhsb);
+
         } else {
             usuario_DAO.update(usuarioPhsb);
         }
@@ -326,6 +326,7 @@ public class JDlgUsuario extends javax.swing.JDialog {
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed
 
         JDlgUsuarioPesquisa jDlgUsuarioPesquisa = new JDlgUsuarioPesquisa(null, true);
+        jDlgUsuarioPesquisa.setTelaAnterior(this);
         jDlgUsuarioPesquisa.setVisible(true);
 
         Util.habilitar(true, jTxtCodigo, jTxtNome, jTxtApelido, jFmtCpf, jFmtDataNascimento,

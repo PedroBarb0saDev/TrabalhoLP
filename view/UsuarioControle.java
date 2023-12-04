@@ -46,7 +46,7 @@ class UsuarioControle extends AbstractTableModel {
 
         if (columnIndex == 0) {
 
-            return usuario.getIdUsuarioPhsb();
+            return usuario.getIdusuarioPhsb();
         }
         if (columnIndex == 1) {
             return usuario.getNomePhsb();

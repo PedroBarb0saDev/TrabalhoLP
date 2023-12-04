@@ -44,7 +44,7 @@ public class ProdutoControle extends AbstractTableModel{
          
         if (columnIndex == 0) {
        
-            return produtoPhsb.getIdProdutoPhsb();
+            return produtoPhsb.getIdprodutoPhsb();
         }
         if (columnIndex == 1) {
             return produtoPhsb.getNomePhsb();

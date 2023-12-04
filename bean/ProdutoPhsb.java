@@ -1,5 +1,6 @@
 package bean;
-// Generated 19/10/2023 14:35:35 by Hibernate Tools 4.3.1
+// Generated 01/12/2023 10:35:20 by Hibernate Tools 4.3.1
+
 
 
 import java.util.HashSet;
@@ -10,7 +11,6 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -23,44 +23,50 @@ import javax.persistence.Table;
 public class ProdutoPhsb  implements java.io.Serializable {
 
 
-     private int idProdutoPhsb;
+     private int idprodutoPhsb;
      private VendedorPhsb vendedorPhsb;
      private String tipoPhsb;
-     private int valorPhsb;
+     private double valorPhsb;
      private String nomePhsb;
-
+     private String produtoPhsbcol;
+    
 
     public ProdutoPhsb() {
     }
 
 	
-    public ProdutoPhsb(int idProdutoPhsb, VendedorPhsb vendedorPhsb) {
-        this.idProdutoPhsb = idProdutoPhsb;
+    public ProdutoPhsb(int idprodutoPhsb, VendedorPhsb vendedorPhsb, String tipoPhsb, double valorPhsb, String nomePhsb, String produtoPhsbcol) {
+        this.idprodutoPhsb = idprodutoPhsb;
         this.vendedorPhsb = vendedorPhsb;
+        this.tipoPhsb = tipoPhsb;
+        this.valorPhsb = valorPhsb;
+        this.nomePhsb = nomePhsb;
+        this.produtoPhsbcol = produtoPhsbcol;
     }
-    public ProdutoPhsb(int idProdutoPhsb, VendedorPhsb vendedorPhsb, String tipoPhsb, int valorPhsb, String nomePhsb, Set vendaProdutoPhsbs) {
-       this.idProdutoPhsb = idProdutoPhsb;
+    public ProdutoPhsb(int idprodutoPhsb, VendedorPhsb vendedorPhsb, String tipoPhsb, double valorPhsb, String nomePhsb, String produtoPhsbcol, Set vendaProdutoPhsbs) {
+       this.idprodutoPhsb = idprodutoPhsb;
        this.vendedorPhsb = vendedorPhsb;
        this.tipoPhsb = tipoPhsb;
        this.valorPhsb = valorPhsb;
        this.nomePhsb = nomePhsb;
-    
+       this.produtoPhsbcol = produtoPhsbcol;
+     
     }
    
      @Id 
 
     
-    @Column(name="id_produto_phsb", unique=true, nullable=false)
-    public int getIdProdutoPhsb() {
-        return this.idProdutoPhsb;
+    @Column(name="idproduto_phsb", unique=true, nullable=false)
+    public int getIdprodutoPhsb() {
+        return this.idprodutoPhsb;
     }
     
-    public void setIdProdutoPhsb(int idProdutoPhsb) {
-        this.idProdutoPhsb = idProdutoPhsb;
+    public void setIdprodutoPhsb(int idprodutoPhsb) {
+        this.idprodutoPhsb = idprodutoPhsb;
     }
 
 @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="fk_id_vendedor_phsb", nullable=false)
+    @JoinColumn(name="fk_vendedor_phsb", nullable=false)
     public VendedorPhsb getVendedorPhsb() {
         return this.vendedorPhsb;
     }
@@ -70,7 +76,7 @@ public class ProdutoPhsb  implements java.io.Serializable {
     }
 
     
-    @Column(name="tipo_phsb", length=20)
+    @Column(name="tipo_phsb", nullable=false, length=45)
     public String getTipoPhsb() {
         return this.tipoPhsb;
     }
@@ -80,17 +86,17 @@ public class ProdutoPhsb  implements java.io.Serializable {
     }
 
     
-    @Column(name="valor_phsb")
-    public int getValorPhsb() {
+    @Column(name="valor_phsb", nullable=false, precision=10)
+    public double getValorPhsb() {
         return this.valorPhsb;
     }
     
-    public void setValorPhsb(int valorPhsb) {
+    public void setValorPhsb(double valorPhsb) {
         this.valorPhsb = valorPhsb;
     }
 
     
-    @Column(name="nome_phsb", length=20)
+    @Column(name="nome_phsb", nullable=false, length=25)
     public String getNomePhsb() {
         return this.nomePhsb;
     }
@@ -99,12 +105,19 @@ public class ProdutoPhsb  implements java.io.Serializable {
         this.nomePhsb = nomePhsb;
     }
 
-
-     @Override
-     public  String toString(){
-         return getNomePhsb();
     
-}
+    @Column(name="produto_phsbcol", nullable=false, length=45)
+    public String getProdutoPhsbcol() {
+        return this.produtoPhsbcol;
+    }
+    
+    public void setProdutoPhsbcol(String produtoPhsbcol) {
+        this.produtoPhsbcol = produtoPhsbcol;
+    }
+
+
+
+
 
 }
 

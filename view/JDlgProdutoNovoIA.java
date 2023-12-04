@@ -66,21 +66,21 @@ public class JDlgProdutoNovoIA extends javax.swing.JDialog {
     public ProdutoPhsb viewBean() {
     ProdutoPhsb produtoPhsb = new ProdutoPhsb();
     int id = Integer.valueOf(jTxtCodigo.getText());
-    produtoPhsb.setIdProdutoPhsb(id);
+    produtoPhsb.setIdprodutoPhsb(id);
     produtoPhsb.setNomePhsb(jTxtNome.getText());
     produtoPhsb.setTipoPhsb(jTxtTipo.getText());
     produtoPhsb.setVendedorPhsb((VendedorPhsb) jCboVendedorfk.getSelectedItem());
 
-//    // Obtenha o vendedor selecionado no JComboBox
-//    VendedorPhsb vendedorSelecionado = (VendedorPhsb) jCboVendedorfk.getSelectedItem();
-//    // Defina o vendedor selecionado como chave estrangeira
-//    produtoPhsb.setVendedorPhsb(vendedorSelecionado);
+    // Obtenha o vendedor selecionado no JComboBox
+    VendedorPhsb vendedorSelecionado = (VendedorPhsb) jCboVendedorfk.getSelectedItem();
+    // Defina o vendedor selecionado como chave estrangeira
+    produtoPhsb.setVendedorPhsb(vendedorSelecionado);
 
     return produtoPhsb;
 }
 
     public void beanView(ProdutoPhsb produto) {
-        String cad = String.valueOf(produto.getIdProdutoPhsb());
+        String cad = String.valueOf(produto.getIdprodutoPhsb());
         jTxtCodigo.setText(cad);
         jTxtNome.setText(produto.getNomePhsb());
         int num = Integer.valueOf(jTxtValor.getText());
@@ -223,7 +223,7 @@ public class JDlgProdutoNovoIA extends javax.swing.JDialog {
         // TODO add your handling code here:
         ProdutoPhsb produtoPhsb = viewBean();
         produto_DAO.insert(produtoPhsb);
-//        produto_DAO.update(produtoPhsb);
+        produto_DAO.update(produtoPhsb);
         setVisible(false);
         this.dispose();
 
