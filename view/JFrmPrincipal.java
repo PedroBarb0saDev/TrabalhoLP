@@ -4,7 +4,15 @@
  * and open the template in the editor.
  */
 package View;
+
+import consultas.JDlgUsuarioConsulta;
 import View.JFrmLogin;
+import consultas.JDlgClienteConsulta;
+import consultas.JDlgProdutoConsulta;
+import consultas.JDlgVendaConsulta;
+import consultas.JDlgVendedorConsulta;
+import View.JDlgVenda_produto;
+
 /**
  *
  * @author u09219761190
@@ -16,13 +24,11 @@ public class JFrmPrincipal extends javax.swing.JFrame {
      */
     public JFrmPrincipal() {
         initComponents();
-          setTitle("Tela de Menu");
+        setTitle("Tela de Menu");
         setLocationRelativeTo(null);
 //            JFrmLogin jFrmLogin2 = new JFrmLogin();
-  
-    }
 
-  
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -33,6 +39,11 @@ public class JFrmPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuBar2 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu4 = new javax.swing.JMenu();
+        jMenu5 = new javax.swing.JMenu();
         jPanel1 = new javax.swing.JPanel();
         jBtnSair = new javax.swing.JButton();
         jToolBar1 = new javax.swing.JToolBar();
@@ -45,10 +56,25 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         jMnuUsuario2 = new javax.swing.JMenuItem();
         jMnuCliente2 = new javax.swing.JMenuItem();
         jMnuProduto = new javax.swing.JMenuItem();
-        jMnConsultas = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMnuVenda = new javax.swing.JMenuItem();
         jMnuVenda_produtor = new javax.swing.JMenuItem();
+        jMenu6 = new javax.swing.JMenu();
+        jMenucClienteConsul = new javax.swing.JMenuItem();
+        jMenuProdutoConsul = new javax.swing.JMenuItem();
+        jMenuVendaConsul = new javax.swing.JMenuItem();
+        jMenuUsuarioConsul = new javax.swing.JMenuItem();
+        jMenuVendedorConsul = new javax.swing.JMenuItem();
+
+        jMenuItem1.setText("jMenuItem1");
+
+        jMenu1.setText("File");
+        jMenuBar2.add(jMenu1);
+
+        jMenu4.setText("Edit");
+        jMenuBar2.add(jMenu4);
+
+        jMenu5.setText("jMenu5");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -162,16 +188,6 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         });
         jMenu2.add(jMnuProduto);
 
-        jMnConsultas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
-        jMnConsultas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMG/database_lightning.png"))); // NOI18N
-        jMnConsultas.setText("Consultas");
-        jMnConsultas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMnConsultasActionPerformed(evt);
-            }
-        });
-        jMenu2.add(jMnConsultas);
-
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Movimento");
@@ -195,6 +211,60 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         jMenu3.add(jMnuVenda_produtor);
 
         jMenuBar1.add(jMenu3);
+
+        jMenu6.setText("Consultas");
+
+        jMenucClienteConsul.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
+        jMenucClienteConsul.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/user.png"))); // NOI18N
+        jMenucClienteConsul.setText("Cliente");
+        jMenucClienteConsul.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenucClienteConsulActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenucClienteConsul);
+
+        jMenuProdutoConsul.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuProdutoConsul.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cart_add.png"))); // NOI18N
+        jMenuProdutoConsul.setText("Produto");
+        jMenuProdutoConsul.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuProdutoConsulActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuProdutoConsul);
+
+        jMenuVendaConsul.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.ALT_MASK));
+        jMenuVendaConsul.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/pencil.png"))); // NOI18N
+        jMenuVendaConsul.setText("Venda");
+        jMenuVendaConsul.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuVendaConsulActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuVendaConsul);
+
+        jMenuUsuarioConsul.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuUsuarioConsul.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/user_red.png"))); // NOI18N
+        jMenuUsuarioConsul.setText("Usuario");
+        jMenuUsuarioConsul.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuUsuarioConsulActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuUsuarioConsul);
+
+        jMenuVendedorConsul.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuVendedorConsul.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-fornecedor-30.png"))); // NOI18N
+        jMenuVendedorConsul.setText("Vendedor");
+        jMenuVendedorConsul.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuVendedorConsulActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuVendedorConsul);
+
+        jMenuBar1.add(jMenu6);
 
         setJMenuBar(jMenuBar1);
 
@@ -232,20 +302,14 @@ public class JFrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMnuProdutoActionPerformed
 
     private void jMnuVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnuVendaActionPerformed
-     
+        JDlgVenda jDlgVenda = new JDlgVenda(null, true);
+        jDlgVenda.setVisible(true);
     }//GEN-LAST:event_jMnuVendaActionPerformed
 
     private void jMnuVenda_produtorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnuVenda_produtorActionPerformed
-        //        JDlgCompraProduto jDlgCompraProduto = new JDlgCompraProduto(null, true);
-        //        jDlgCompraProduto.setVisible(true);
+        JDlgVenda_produto jDlgVenda_produto = new JDlgVenda_produto(null, true);
+        jDlgVenda_produto.setVisible(true);
     }//GEN-LAST:event_jMnuVenda_produtorActionPerformed
-
-    private void jMnConsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMnConsultasActionPerformed
-        // TODO add your handling code here:
-        
-        JDlgUsuarioConsulta jDlgUsuarioConsulta = new JDlgUsuarioConsulta(null, true);
-        jDlgUsuarioConsulta.setVisible(true);
-    }//GEN-LAST:event_jMnConsultasActionPerformed
 
     private void jBtnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnSairActionPerformed
         // TODO add your handling code here:
@@ -275,6 +339,40 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         JDlgVendedorNovo jDlgVendedorNovo = new JDlgVendedorNovo(null, true);
         jDlgVendedorNovo.setVisible(true);
     }//GEN-LAST:event_jBtnVendedorToolActionPerformed
+
+    private void jMenuVendedorConsulActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuVendedorConsulActionPerformed
+        // TODO add your handling code here:
+        JDlgVendedorConsulta jDlgVendedorConsulta = new JDlgVendedorConsulta(null, true);
+        jDlgVendedorConsulta.setVisible(true);
+    }//GEN-LAST:event_jMenuVendedorConsulActionPerformed
+
+    private void jMenuProdutoConsulActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuProdutoConsulActionPerformed
+        // TODO add your handling code here:
+        JDlgProdutoConsulta jDlgProdutoConsulta = new JDlgProdutoConsulta(null, true);
+        jDlgProdutoConsulta.setVisible(true);
+    }//GEN-LAST:event_jMenuProdutoConsulActionPerformed
+
+    private void jMenucClienteConsulActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenucClienteConsulActionPerformed
+        // TODO add your handling code here:
+        JDlgClienteConsulta jDlgClienteConsulta = new JDlgClienteConsulta(null, true);
+        jDlgClienteConsulta.setVisible(true);
+
+    }//GEN-LAST:event_jMenucClienteConsulActionPerformed
+
+    private void jMenuUsuarioConsulActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuUsuarioConsulActionPerformed
+        // TODO add your handling code here:
+        JDlgUsuarioConsulta jDlgUsuarioConsulta = new JDlgUsuarioConsulta(null, true);
+        jDlgUsuarioConsulta.setVisible(true);
+
+    }//GEN-LAST:event_jMenuUsuarioConsulActionPerformed
+
+    private void jMenuVendaConsulActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuVendaConsulActionPerformed
+        // TODO add your handling code here:
+
+        JDlgVendaConsulta jDlgVendaConsulta = new JDlgVendaConsulta(null, true);
+        jDlgVendaConsulta.setVisible(true);
+
+    }//GEN-LAST:event_jMenuVendaConsulActionPerformed
 
     /**
      * @param args the command line arguments
@@ -306,7 +404,7 @@ public class JFrmPrincipal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFrmPrincipal().setVisible(true);
+                new JFrmLogin().setVisible(true);
             }
         });
     }
@@ -317,10 +415,20 @@ public class JFrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jBtnSair;
     private javax.swing.JButton jBtnUsuariosTool;
     private javax.swing.JButton jBtnVendedorTool;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMnConsultas;
+    private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuProdutoConsul;
+    private javax.swing.JMenuItem jMenuUsuarioConsul;
+    private javax.swing.JMenuItem jMenuVendaConsul;
+    private javax.swing.JMenuItem jMenuVendedorConsul;
+    private javax.swing.JMenuItem jMenucClienteConsul;
     private javax.swing.JMenuItem jMnuCliente2;
     private javax.swing.JMenuItem jMnuProduto;
     private javax.swing.JMenuItem jMnuUsuario2;

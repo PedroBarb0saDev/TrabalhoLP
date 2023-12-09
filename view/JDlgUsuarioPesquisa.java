@@ -8,7 +8,7 @@ package View;
 import dao.Usuario_DAO;
 import java.util.List;
 import bean.UsuarioPhsb;
-import View.UsuarioControle;
+import consultas.UsuarioControle;
 
 /**
  *
@@ -17,8 +17,9 @@ import View.UsuarioControle;
 public class JDlgUsuarioPesquisa extends javax.swing.JDialog {
 
     private JDlgUsuario jDlgUsuario;
-    private UsuarioControle usuarioControle;
+    UsuarioControle usuarioControle;
     Usuario_DAO usuario_DAO;
+    UsuarioPhsb usuarioPhsb;
 
     /**
      * Creates new form JDlgUsuarioPesquisa
@@ -31,11 +32,11 @@ public class JDlgUsuarioPesquisa extends javax.swing.JDialog {
         setTitle("Consultar de usuários");
 
         usuarioControle = new UsuarioControle();
-         usuario_DAO = new Usuario_DAO();
+        usuario_DAO = new Usuario_DAO();
+
         List lista = usuario_DAO.listALL();
         usuarioControle.setList(lista);
-        
-        
+
         jTable1.setModel(usuarioControle);
     }
 
@@ -119,12 +120,12 @@ public class JDlgUsuarioPesquisa extends javax.swing.JDialog {
     private void jBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkActionPerformed
         // TODO add your handling code here:
         int rowSel = jTable1.getSelectedRow();
-        UsuarioPhsb usuarioPhsb = usuarioControle.getBean(rowSel);
+         usuarioPhsb = usuarioControle.getBean(rowSel);
+         
         jDlgUsuario.beanView(usuarioPhsb);
-        
-      
+
         setVisible(false);
-       
+
 
     }//GEN-LAST:event_jBtnOkActionPerformed
 

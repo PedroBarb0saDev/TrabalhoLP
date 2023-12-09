@@ -172,7 +172,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Fk_vendedor"/>
+        <Property name="text" type="java.lang.String" value="Vendedor"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="jCboVendedorfk">

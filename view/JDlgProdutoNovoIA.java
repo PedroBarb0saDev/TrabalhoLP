@@ -7,11 +7,11 @@ package View;
 
 import bean.ProdutoPhsb;
 import bean.VendedorPhsb;
+import com.sun.org.glassfish.external.probe.provider.annotations.Probe;
 import dao.Produto_DAO;
 import java.util.List;
 import tools.Util;
 import dao.Vendedor_DAO;
-
 
 /**
  *
@@ -19,11 +19,11 @@ import dao.Vendedor_DAO;
  */
 public class JDlgProdutoNovoIA extends javax.swing.JDialog {
 
+    public boolean incluindo;
     Produto_DAO produto_DAO;
-   
-
-    public JDlgProdutoNovoIA() {
-    }
+    ProdutoPhsb produtoPhsb;
+    JDlgProdutoNovo jDlgProdutoNovo;
+    ProdutoControle produtoControle;
 
     /**
      * Creates new form JDlgProdutoNovoIA
@@ -34,59 +34,43 @@ public class JDlgProdutoNovoIA extends javax.swing.JDialog {
         setLocationRelativeTo(null);
         setTitle("produto");
 
-
+        produtoPhsb = new ProdutoPhsb();
         produto_DAO = new Produto_DAO();
-      List list = produto_DAO.listALL();
-      
-      Vendedor_DAO vendedor_DAO = new  Vendedor_DAO();
-      List listVende = vendedor_DAO.listALL();
-      
+        
+        produtoControle = new ProdutoControle();
+        List list = produto_DAO.listALL();
+        produtoControle.setList(list);
+
+        Vendedor_DAO vendedor_DAO = new Vendedor_DAO();
+        List listVende = vendedor_DAO.listALL();
+
         for (int i = 0; i < listVende.size(); i++) {
             jCboVendedorfk.addItem((VendedorPhsb) listVende.get(i));
         }
     }
 
-//    public ProdutoPhsb viewBean() {
-        
-        
-//        ProdutoPhsb produtoPhsb = new ProdutoPhsb();
-//        int id = Integer.valueOf(jTxtCodigo.getText());
-//        produtoPhsb.setIdProdutoPhsb(id);
-//        produtoPhsb.setNomePhsb(jTxtNome.getText());
-//        produtoPhsb.setTipoPhsb(jTxtTipo.getText());
-        
-//        produtoPhsb.setVendedorPhsb(jCboVendedorfk.getItemAt(VendedorPhsb));
-
-//        produtoPhsb.setValorPhsb(jTxtValor.getText());
-////;
-//        return produtoPhsb;
-//
-//    }
-//    
     public ProdutoPhsb viewBean() {
-    ProdutoPhsb produtoPhsb = new ProdutoPhsb();
-    int id = Integer.valueOf(jTxtCodigo.getText());
-    produtoPhsb.setIdprodutoPhsb(id);
-    produtoPhsb.setNomePhsb(jTxtNome.getText());
-    produtoPhsb.setTipoPhsb(jTxtTipo.getText());
-    produtoPhsb.setVendedorPhsb((VendedorPhsb) jCboVendedorfk.getSelectedItem());
 
-    // Obtenha o vendedor selecionado no JComboBox
-    VendedorPhsb vendedorSelecionado = (VendedorPhsb) jCboVendedorfk.getSelectedItem();
-    // Defina o vendedor selecionado como chave estrangeira
-    produtoPhsb.setVendedorPhsb(vendedorSelecionado);
+        produtoPhsb.setIdprodutoPhsb(Util.strInt(jTxtCodigo.getText()));
+        produtoPhsb.setValorPhsb(Util.strDouble(jTxtValor.getText()));
+        produtoPhsb.setNomePhsb(jTxtNome.getText());
+        produtoPhsb.setTipoPhsb(jTxtTipo.getText());
+        // Obtenha o vendedor selecionado no JComboBox
+        produtoPhsb.setVendedorPhsb((VendedorPhsb) jCboVendedorfk.getSelectedItem());
 
-    return produtoPhsb;
-}
+        return produtoPhsb;
+    }
 
-    public void beanView(ProdutoPhsb produto) {
-        String cad = String.valueOf(produto.getIdprodutoPhsb());
-        jTxtCodigo.setText(cad);
-        jTxtNome.setText(produto.getNomePhsb());
-        int num = Integer.valueOf(jTxtValor.getText());
+    public void beanView(ProdutoPhsb produtoPhsb) {
+        jTxtCodigo.setText(Util.intStr(produtoPhsb.getIdprodutoPhsb()));
+        jTxtNome.setText(produtoPhsb.getNomePhsb());
+        jTxtTipo.setText(produtoPhsb.getTipoPhsb());
+        jTxtValor.setText(Util.doubleStr(produtoPhsb.getValorPhsb()));
+        jCboVendedorfk.setSelectedItem((VendedorPhsb) produtoPhsb.getVendedorPhsb());
+    }
 
-        jTxtValor.setText(num + "");
-
+    public void setTelaAnterior(JDlgProdutoNovo jDlgProdutoNovo) {
+        this.jDlgProdutoNovo = jDlgProdutoNovo;
     }
 
     /**
@@ -143,7 +127,7 @@ public class JDlgProdutoNovoIA extends javax.swing.JDialog {
 
         jLabel11.setText("tipo");
 
-        jLabel1.setText("Fk_vendedor");
+        jLabel1.setText("Vendedor");
 
         jCboVendedorfk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -221,25 +205,38 @@ public class JDlgProdutoNovoIA extends javax.swing.JDialog {
 
     private void jBtnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOKActionPerformed
         // TODO add your handling code here:
-        ProdutoPhsb produtoPhsb = viewBean();
-        produto_DAO.insert(produtoPhsb);
-        produto_DAO.update(produtoPhsb);
+        produtoPhsb = viewBean();
+        if (incluindo == true) {
+            produto_DAO.insert(produtoPhsb);
+             
+            jDlgProdutoNovo.ProdLista =   produto_DAO.listALL();            
+            produtoControle.setList(jDlgProdutoNovo.ProdLista);
+
+        } else {
+            produto_DAO.update(produtoPhsb);
+            List lista = produto_DAO.listALL();
+            produtoControle.setList(lista);
+
+        }
+
         setVisible(false);
-        this.dispose();
+        
+        
+ 
+
 
     }//GEN-LAST:event_jBtnOKActionPerformed
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
         // TODO add your handling code here:
 
-        setVisible(false);
+        this.dispose();
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jCboVendedorfkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCboVendedorfkActionPerformed
         // TODO add your handling code here:
-        
-    
-                
+
+
     }//GEN-LAST:event_jCboVendedorfkActionPerformed
 
     /**

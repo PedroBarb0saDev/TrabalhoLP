@@ -1,5 +1,5 @@
 package bean;
-// Generated 01/12/2023 10:35:20 by Hibernate Tools 4.3.1
+// Generated 08/12/2023 12:09:27 by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -15,7 +15,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "vendedor_phsb",
-        catalog = "db_pedro_barbosa"
+         catalog = "db_pedro_barbosa"
 )
 public class VendedorPhsb implements java.io.Serializable {
 
@@ -36,7 +36,7 @@ public class VendedorPhsb implements java.io.Serializable {
         this.rgPhsb = rgPhsb;
     }
 
-    public VendedorPhsb(int idvendedorPhsb, String nomePhsb, String cidadePhsb, String cpfPhsb, String rgPhsb, Set produtoPhsbs) {
+    public VendedorPhsb(int idvendedorPhsb, String nomePhsb, String cidadePhsb, String cpfPhsb, String rgPhsb, Set produtoPhsbs, Set vendaPhsbs) {
         this.idvendedorPhsb = idvendedorPhsb;
         this.nomePhsb = nomePhsb;
         this.cidadePhsb = cidadePhsb;
@@ -92,21 +92,21 @@ public class VendedorPhsb implements java.io.Serializable {
         this.rgPhsb = rgPhsb;
     }
 
-    @Override
     public String toString() {
+
         return getNomePhsb();
     }
-
+    
+  
     public boolean equals(Object object) {
-
-        if (object instanceof VendedorPhsb) {
+        if (object instanceof ClientePhsb) {
             VendedorPhsb vendedorPhsb = (VendedorPhsb) object;
-            if (this.getIdvendedorPhsb() == vendedorPhsb.getIdvendedorPhsb()) {
-
+            if (this.getIdvendedorPhsb()== vendedorPhsb.getIdvendedorPhsb()) {
                 return true;
-            }
-
+            }            
         }
-        return false;
+        return true;
     }
+
+
 }

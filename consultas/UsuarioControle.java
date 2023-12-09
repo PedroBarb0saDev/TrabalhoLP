@@ -3,61 +3,63 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package View;
+package consultas;
 
-import bean.VendedorPhsb;
+import bean.UsuarioPhsb;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
+/**
+ *
+ * @author u09219761190
+ */
+public class UsuarioControle extends AbstractTableModel {
+        private List lista;
 
-public class VendedorControle extends AbstractTableModel{
-     private List lista;
-    
     public void setList(List lista) {
         this.lista = lista;
         this.fireTableDataChanged();
-        
+
     }
-    
-    public VendedorPhsb getBean(int linha) {
-        return (VendedorPhsb) lista.get(linha);
-   
-          
+
+    public UsuarioPhsb getBean(int linha) {
+        return (UsuarioPhsb) lista.get(linha);
+
     }
-    
+
     @Override
     public int getRowCount() {
         return lista.size();
-       
+        //retorna o número de linhas da tabela
     }
 
     @Override
     public int getColumnCount() {
         return 4;
-        
+        //número de colunas 
     }
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        
-       VendedorPhsb vendedorPhsb = (VendedorPhsb) lista.get(rowIndex);
-         
+
+        UsuarioPhsb usuario = (UsuarioPhsb) lista.get(rowIndex);
+
         if (columnIndex == 0) {
-       
-            return vendedorPhsb.getIdvendedorPhsb();
+
+            return usuario.getIdusuarioPhsb();
         }
         if (columnIndex == 1) {
-            return vendedorPhsb.getNomePhsb();
+            return usuario.getNomePhsb();
         }
         if (columnIndex == 2) {
-            return vendedorPhsb.getCpfPhsb();
+            return usuario.getApelidoPhsb();
         }
         if (columnIndex == 3) {
-            return vendedorPhsb.getRgPhsb();
+            return usuario.getCpfPhsb();
         }
         return "";
     }
-    
+
     @Override
     public String getColumnName(int columnIndex) {
         if (columnIndex == 0) {
@@ -67,10 +69,10 @@ public class VendedorControle extends AbstractTableModel{
             return "Nome";
         }
         if (columnIndex == 2) {
-            return "Cpf";
+            return "apelido";
         }
         if (columnIndex == 3) {
-            return "Rg";
+            return "CPF";
         }
         return "";
     }

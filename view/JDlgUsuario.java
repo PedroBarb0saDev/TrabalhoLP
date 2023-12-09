@@ -23,9 +23,10 @@ import tools.Util;
 public class JDlgUsuario extends javax.swing.JDialog {
 
     private boolean incluindo;
+    //variaveis usadas para formatação de caompos formatados
     MaskFormatter mascaraCpf;
     MaskFormatter mascaraDataNascimento;
-    //variaveis usadas para formatação de caompos formatados
+
     public UsuarioPhsb usuarioPhsb;
     public Usuario_DAO usuario_DAO;
 
@@ -37,7 +38,7 @@ public class JDlgUsuario extends javax.swing.JDialog {
         initComponents();
         setTitle("Cadastro de Usuário");
         setLocationRelativeTo(null);
-        //setVisible(true);
+        usuarioPhsb = new UsuarioPhsb();
         usuario_DAO = new Usuario_DAO();
 
         Util.habilitar(false, jTxtCodigo, jTxtNome, jTxtApelido, jFmtCpf, jFmtDataNascimento,
@@ -58,16 +59,16 @@ public class JDlgUsuario extends javax.swing.JDialog {
     }
 
     public UsuarioPhsb viewBean() {
-        UsuarioPhsb usuariophsb = new UsuarioPhsb();
+
         int id = Integer.valueOf(jTxtCodigo.getText());
-        usuariophsb.setIdusuarioPhsb(id);
-        usuariophsb.setNomePhsb(jTxtNome.getText());
-        usuariophsb.setApelidoPhsb(jTxtApelido.getText());
-        usuariophsb.setCpfPhsb(jFmtCpf.getText());
-        usuariophsb.setSenhaPhsb(jPwfSenha.getText());
-        usuariophsb.setDataNascimentoPhsb(Util.strDate(jFmtDataNascimento.getText()));
-        usuariophsb.setNivelPhsb(jCboNivel.getSelectedIndex());
-        usuariophsb.setAtivoPhsb(jChbAtivo.isSelected() == true ? "S" : "N");
+        usuarioPhsb.setIdusuarioPhsb(id);
+        usuarioPhsb.setNomePhsb(jTxtNome.getText());
+        usuarioPhsb.setApelidoPhsb(jTxtApelido.getText());
+        usuarioPhsb.setCpfPhsb(jFmtCpf.getText());
+        usuarioPhsb.setSenhaPhsb(jPwfSenha.getText());
+        usuarioPhsb.setDataNascimentoPhsb(Util.strDate(jFmtDataNascimento.getText()));
+        usuarioPhsb.setNivelPhsb(jCboNivel.getSelectedIndex());
+        usuarioPhsb.setAtivoPhsb(jChbAtivo.isSelected() == true ? "S" : "N");
 
         return usuarioPhsb;
     }
@@ -287,40 +288,28 @@ public class JDlgUsuario extends javax.swing.JDialog {
 
     private void jBtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnCancelarActionPerformed
         // TODO add your handling code here:
-        Util.habilitar(false, jTxtCodigo, jTxtNome, jTxtApelido, jFmtCpf, jFmtDataNascimento,
-                jPwfSenha, jCboNivel, jChbAtivo, jBtnCancelar, jBtnConfirmar);
+         Util.habilitar(false, jTxtNome, jPwfSenha, jTxtApelido, jTxtCodigo, jCboNivel, jChbAtivo, jFmtCpf, jFmtCpf, jFmtDataNascimento, jBtnCancelar, jBtnConfirmar);
         Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
-        Util.limparCampos(jTxtCodigo, jTxtNome, jTxtApelido, jFmtCpf, jFmtDataNascimento,
-                jPwfSenha, jCboNivel, jChbAtivo);
-        Util.limparCampos(jTxtCodigo, jTxtNome, jTxtApelido, jFmtCpf, jFmtDataNascimento,
-                jPwfSenha, jCboNivel, jChbAtivo);
 
-        Util.mensagem("cancelada");
+        Util.limparCampos(jTxtNome, jTxtApelido, jTxtCodigo, jCboNivel, jChbAtivo, jFmtCpf, jFmtCpf, jFmtDataNascimento);
+
+        
     }//GEN-LAST:event_jBtnCancelarActionPerformed
 
     private void jBtnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConfirmarActionPerformed
         // usuario ficou verde é o atributo da varial vel global
-
+        usuarioPhsb = viewBean();
         if (incluindo == true) {
-            Usuario_DAO usuario_DAO = new Usuario_DAO();
-            usuarioPhsb = viewBean();
 
             usuario_DAO.insert(usuarioPhsb);
 
         } else {
             usuario_DAO.update(usuarioPhsb);
         }
-
-        Util.habilitar(true, jTxtCodigo, jTxtNome, jTxtApelido, jFmtCpf, jFmtDataNascimento,
-                jPwfSenha, jCboNivel, jChbAtivo, jBtnCancelar, jBtnConfirmar);
-        Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
-
-        Util.limparCampos(jTxtCodigo, jTxtNome, jTxtApelido, jFmtCpf, jFmtDataNascimento,
-                jPwfSenha, jCboNivel, jChbAtivo);
-
-        Util.habilitar(false, jTxtCodigo, jTxtNome, jTxtApelido, jFmtCpf, jFmtDataNascimento,
-                jPwfSenha, jCboNivel, jChbAtivo, jBtnCancelar, jBtnConfirmar);
+   Util.habilitar(false, jTxtNome, jTxtApelido, jTxtCodigo, jCboNivel, jChbAtivo, jFmtCpf, jFmtCpf, jFmtDataNascimento, jBtnCancelar, jBtnConfirmar, jPwfSenha);
         Util.habilitar(true, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
+
+    usuarioPhsb = new UsuarioPhsb();
     }//GEN-LAST:event_jBtnConfirmarActionPerformed
 
     private void jBtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnPesquisarActionPerformed
@@ -329,21 +318,15 @@ public class JDlgUsuario extends javax.swing.JDialog {
         jDlgUsuarioPesquisa.setTelaAnterior(this);
         jDlgUsuarioPesquisa.setVisible(true);
 
-        Util.habilitar(true, jTxtCodigo, jTxtNome, jTxtApelido, jFmtCpf, jFmtDataNascimento,
-                jPwfSenha, jCboNivel, jChbAtivo, jBtnIncluir, jBtnConfirmar);
-        Util.habilitar(false, jBtnCancelar, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
     }//GEN-LAST:event_jBtnPesquisarActionPerformed
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
         // TODO add your handling code here
-
-        Util.habilitar(true, jTxtCodigo, jTxtNome, jTxtApelido, jFmtCpf, jFmtDataNascimento,
+         Util.habilitar(true, jTxtCodigo, jTxtNome, jTxtApelido, jFmtCpf, jFmtDataNascimento,
                 jPwfSenha, jCboNivel, jChbAtivo, jBtnCancelar, jBtnConfirmar);
         Util.habilitar(false, jBtnIncluir, jBtnAlterar, jBtnExcluir, jBtnPesquisar);
-
         Util.limparCampos(jTxtCodigo, jTxtNome, jTxtApelido, jFmtCpf, jFmtDataNascimento,
                 jPwfSenha, jCboNivel, jChbAtivo);
-
         incluindo = true;
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
@@ -361,7 +344,7 @@ public class JDlgUsuario extends javax.swing.JDialog {
         if (Util.pergunta("Deseja execluir o registro") == true) {
             usuarioPhsb = viewBean();
             usuario_DAO.delete(usuarioPhsb);
-            Util.mensagem("Registro Excluido");
+
         } else {
             Util.mensagem("Exclusão cancelada");
         }

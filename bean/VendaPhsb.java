@@ -1,6 +1,5 @@
 package bean;
-// Generated 01/12/2023 10:35:20 by Hibernate Tools 4.3.1
-
+// Generated 08/12/2023 12:09:27 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -29,7 +28,7 @@ public class VendaPhsb  implements java.io.Serializable {
 
      private int idvendaPhsb;
      private ClientePhsb clientePhsb;
-     private int fkVendedorPhsb;
+     private VendedorPhsb vendedorPhsb;
      private Date dataPhsb;
      private double valortotalPhsb;
    
@@ -38,20 +37,20 @@ public class VendaPhsb  implements java.io.Serializable {
     }
 
 	
-    public VendaPhsb(int idvendaPhsb, ClientePhsb clientePhsb, int fkVendedorPhsb, Date dataPhsb, double valortotalPhsb) {
+    public VendaPhsb(int idvendaPhsb, ClientePhsb clientePhsb, VendedorPhsb vendedorPhsb, Date dataPhsb, double valortotalPhsb) {
         this.idvendaPhsb = idvendaPhsb;
         this.clientePhsb = clientePhsb;
-        this.fkVendedorPhsb = fkVendedorPhsb;
+        this.vendedorPhsb = vendedorPhsb;
         this.dataPhsb = dataPhsb;
         this.valortotalPhsb = valortotalPhsb;
     }
-    public VendaPhsb(int idvendaPhsb, ClientePhsb clientePhsb, int fkVendedorPhsb, Date dataPhsb, double valortotalPhsb, Set vendaProdutoPhsbs) {
+    public VendaPhsb(int idvendaPhsb, ClientePhsb clientePhsb, VendedorPhsb vendedorPhsb, Date dataPhsb, double valortotalPhsb, Set vendaProdutoPhsbs) {
        this.idvendaPhsb = idvendaPhsb;
        this.clientePhsb = clientePhsb;
-       this.fkVendedorPhsb = fkVendedorPhsb;
+       this.vendedorPhsb = vendedorPhsb;
        this.dataPhsb = dataPhsb;
        this.valortotalPhsb = valortotalPhsb;
-       
+     
     }
    
      @Id 
@@ -76,14 +75,14 @@ public class VendaPhsb  implements java.io.Serializable {
         this.clientePhsb = clientePhsb;
     }
 
-    
-    @Column(name="fk_vendedor_phsb", nullable=false)
-    public int getFkVendedorPhsb() {
-        return this.fkVendedorPhsb;
+@ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="fk_vendedor_phsb", nullable=false)
+    public VendedorPhsb getVendedorPhsb() {
+        return this.vendedorPhsb;
     }
     
-    public void setFkVendedorPhsb(int fkVendedorPhsb) {
-        this.fkVendedorPhsb = fkVendedorPhsb;
+    public void setVendedorPhsb(VendedorPhsb vendedorPhsb) {
+        this.vendedorPhsb = vendedorPhsb;
     }
 
     @Temporal(TemporalType.DATE)
@@ -106,9 +105,7 @@ public class VendaPhsb  implements java.io.Serializable {
         this.valortotalPhsb = valortotalPhsb;
     }
 
-    public void setFkVendedorPhsb() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+  
 
 
 

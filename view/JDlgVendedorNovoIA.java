@@ -7,7 +7,13 @@ package View;
 
 import bean.VendedorPhsb;
 import dao.Vendedor_DAO;
+import java.text.ParseException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JTable;
+import javax.swing.text.DefaultFormatterFactory;
+import javax.swing.text.MaskFormatter;
 import tools.Util;
 
 /**
@@ -16,13 +22,13 @@ import tools.Util;
  */
 public class JDlgVendedorNovoIA extends javax.swing.JDialog {
 
+    public boolean incluindo;
     Vendedor_DAO vendedor_DAO;
-    VendedorControle vendedorControle;
-    JDlgVendedorNovo jDlgVendedorNovo;
-    private boolean incluindo;
 
-    public JDlgVendedorNovoIA() {
-    }
+    VendedorPhsb vendedorPhsb;
+    JDlgVendedorNovo jDlgVendedorNovo;
+    VendedorControle vendedorControle;
+    MaskFormatter cpf;
 
     /**
      * Creates new form JDlgVendedorNovoIA
@@ -32,19 +38,33 @@ public class JDlgVendedorNovoIA extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Vendedor");
-        vendedorControle = new VendedorControle();
+
         vendedor_DAO = new Vendedor_DAO();
-        List lista = vendedor_DAO.listALL();
-        vendedorControle.setList(lista);
+        vendedorPhsb = new VendedorPhsb();
+        vendedorControle = new VendedorControle();
+        List list = vendedor_DAO.listALL();
+        vendedorControle.setList(list);
+      
+                
+
+        try {
+
+            cpf = new MaskFormatter("###.###.###-##");
+
+        } catch (ParseException ex) {
+            Logger.getLogger(JDlgUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        jFrmtCpf.setFormatterFactory(new DefaultFormatterFactory(cpf));
 
     }
 
     public VendedorPhsb viewBean() {
-        VendedorPhsb vendedorPhsb = new VendedorPhsb();
-        int id = Integer.valueOf(jTxtCodigo.getText());
-        vendedorPhsb.setIdvendedorPhsb(id);
+
+        vendedorPhsb.setIdvendedorPhsb(Util.strInt(jTxtCodigo.getText()));
+
         vendedorPhsb.setNomePhsb(jTxtNome.getText());
-        vendedorPhsb.setCpfPhsb(jTxtCpf.getText());
+        vendedorPhsb.setCpfPhsb(jFrmtCpf.getText());
         vendedorPhsb.setRgPhsb(jTxtRG.getText());
         vendedorPhsb.setCidadePhsb(jTxtCidade.getText());
 
@@ -53,11 +73,12 @@ public class JDlgVendedorNovoIA extends javax.swing.JDialog {
     }
 
     public void beanView(VendedorPhsb vendedorPhsb) {
-        String cad = String.valueOf(vendedorPhsb.getIdvendedorPhsb());
-        jTxtCodigo.setText(cad);
-        jTxtNome.setText(vendedorPhsb.getNomePhsb());
-        jTxtCpf.setText(vendedorPhsb.getCpfPhsb());
 
+        jTxtCodigo.setText(Util.intStr(vendedorPhsb.getIdvendedorPhsb()));
+
+        jTxtNome.setText(vendedorPhsb.getNomePhsb());
+        jFrmtCpf.setText(vendedorPhsb.getCpfPhsb());
+        jTxtCidade.setText(vendedorPhsb.getCidadePhsb());
         jTxtRG.setText(vendedorPhsb.getRgPhsb());
 
     }
@@ -85,11 +106,11 @@ public class JDlgVendedorNovoIA extends javax.swing.JDialog {
         jLabel2 = new javax.swing.JLabel();
         jTxtNome = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTxtCpf = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jTxtRG = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jTxtCidade = new javax.swing.JTextField();
+        jFrmtCpf = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -133,14 +154,6 @@ public class JDlgVendedorNovoIA extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTxtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTxtRG, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jTxtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -151,7 +164,16 @@ public class JDlgVendedorNovoIA extends javax.swing.JDialog {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTxtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jTxtCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(jLabel3)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jFrmtCpf))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(jLabel4)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jTxtRG, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -171,8 +193,8 @@ public class JDlgVendedorNovoIA extends javax.swing.JDialog {
                     .addComponent(jTxtRG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTxtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(jLabel3)
+                    .addComponent(jFrmtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -186,14 +208,24 @@ public class JDlgVendedorNovoIA extends javax.swing.JDialog {
 
     private void jBtnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOKActionPerformed
         // TODO add your handling code here:
-        Vendedor_DAO vendedor_DAO = new Vendedor_DAO();
-        VendedorPhsb vendedorPhsb = viewBean();
-        vendedor_DAO.insert(vendedorPhsb);
-//        }
-        List lista = vendedor_DAO.listALL();
-        vendedorControle.setList(lista);
+        vendedorPhsb = viewBean();
+        if (incluindo == true) {
+            vendedor_DAO.insert(vendedorPhsb);
 
-        this.dispose();
+          jDlgVendedorNovo.vendaLista = vendedor_DAO.listALL();
+            vendedorControle.setList(jDlgVendedorNovo.vendaLista);
+
+        } else {
+            vendedor_DAO.update(vendedorPhsb);
+         
+            List lista = vendedor_DAO.listALL();
+            vendedorControle.setList(lista);
+          
+        }
+      
+
+        //        }
+        setVisible(false);
 
 
     }//GEN-LAST:event_jBtnOKActionPerformed
@@ -249,6 +281,7 @@ public class JDlgVendedorNovoIA extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtnCancelar;
     private javax.swing.JButton jBtnOK;
+    private javax.swing.JFormattedTextField jFrmtCpf;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -257,7 +290,6 @@ public class JDlgVendedorNovoIA extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTxtCidade;
     private javax.swing.JTextField jTxtCodigo;
-    private javax.swing.JTextField jTxtCpf;
     private javax.swing.JTextField jTxtNome;
     private javax.swing.JTextField jTxtRG;
     // End of variables declaration//GEN-END:variables

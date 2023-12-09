@@ -81,7 +81,7 @@ public class Venda_DAO extends DAO_Abstract {
 
     }
 
-    public List listValorTotalData(int valorTotal, Date data) {
+    public List listValorTotalData(double valorTotal, Date data) {
         session.beginTransaction();
         Criteria criteria = session.createCriteria(VendaPhsb.class);
         criteria.add(Restrictions.like("valorTotal", "%" + valorTotal + "%"));

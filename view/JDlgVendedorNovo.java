@@ -8,36 +8,40 @@ package View;
 import dao.Vendedor_DAO;
 import bean.VendedorPhsb;
 
-
 import java.util.List;
 import javax.swing.JTable;
+import javax.swing.text.MaskFormatter;
 import tools.Util;
-
 
 /**
  *
  * @author u09219761190
  */
 public class JDlgVendedorNovo extends javax.swing.JDialog {
-     boolean incluindo;
- Vendedor_DAO vendedor_DAO;
+
+    Vendedor_DAO vendedor_DAO;
     VendedorPhsb vendedorPhsb;
     VendedorControle vendedorControle;
-    private JDlgVendedorNovoIA jDlgVendedorNovoIA;
+    public JDlgVendedorNovoIA jDlgVendedorNovoIA;
+    MaskFormatter cpf;
+    public List vendaLista;
+
     /**
      * Creates new form JDlgVendedor
      */
     public JDlgVendedorNovo(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-          setTitle("Cadastro Vendedor");
+        setTitle("Cadastro Vendedor");
         setLocationRelativeTo(null);
-        
-         jDlgVendedorNovoIA = new JDlgVendedorNovoIA(null, true);
+
+        jDlgVendedorNovoIA = new JDlgVendedorNovoIA(null, true);
         vendedorControle = new VendedorControle();
         vendedor_DAO = new Vendedor_DAO();
-        List lista = vendedor_DAO.listALL();
-        vendedorControle.setList(lista);
+        vendedorPhsb = new VendedorPhsb();
+
+        vendaLista = vendedor_DAO.listALL();
+        vendedorControle.setList(vendaLista);
         jTablel.setModel(vendedorControle);
     }
 
@@ -121,29 +125,35 @@ public class JDlgVendedorNovo extends javax.swing.JDialog {
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
         // TODO add your handling code here:
+        jDlgVendedorNovoIA.incluindo = true;
         jDlgVendedorNovoIA.setTitle("Inclusão");
 
+        jDlgVendedorNovoIA.telaAnterior(this);
         jDlgVendedorNovoIA.setVisible(true);
-        List lista = vendedor_DAO.listALL();
-        
-        
-        
-        
+     vendaLista = vendedor_DAO.listALL();
+        vendedorControle.setList(vendaLista);
+        jTablel.setModel(vendedorControle);
+
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
         // TODO add your handling code here:
-        jDlgVendedorNovoIA.setTitle("Alteração");
+        jDlgVendedorNovoIA.incluindo = false;
         int rowSel = jTablel.getSelectedRow();
-        VendedorPhsb vendedorPhsb =  vendedorControle.getBean(rowSel);
+        vendedorPhsb = vendedorControle.getBean(rowSel);
         jDlgVendedorNovoIA.beanView(vendedorPhsb);
+        jDlgVendedorNovoIA.setTitle("Alteração");
+        jDlgVendedorNovoIA.telaAnterior(this);
 
         jDlgVendedorNovoIA.setVisible(true);
+        vendaLista = vendedor_DAO.listALL();
+        vendedorControle.setList(vendaLista);
+        jTablel.setModel(vendedorControle);
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 
     private void jBtnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnExcluirActionPerformed
         // TODO add your handling code here:
-        if (Util.pergunta("Deseja execluir o registro") == true ) {
+        if (Util.pergunta("Deseja execluir o registro") == true) {
             int sel = jTablel.getSelectedRow();
             vendedorPhsb = vendedorControle.getBean(sel);
             vendedor_DAO.delete(vendedorPhsb);

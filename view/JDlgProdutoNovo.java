@@ -16,10 +16,12 @@ import tools.Util;
  */
 public class JDlgProdutoNovo extends javax.swing.JDialog {
 
+    public boolean incluindo;
     Produto_DAO produto_DAO;
     ProdutoPhsb produtoPhsb;
     ProdutoControle produtoControle;
-    private JDlgProdutoNovoIA jDlgProdutoNovoIA;
+    JDlgProdutoNovoIA jDlgProdutoNovoIA;
+    public List ProdLista;
 
     /**
      * Creates new form JDlgProduto
@@ -34,8 +36,9 @@ public class JDlgProdutoNovo extends javax.swing.JDialog {
         jDlgProdutoNovoIA = new JDlgProdutoNovoIA(null, true);
         produtoControle = new ProdutoControle();
         produto_DAO = new Produto_DAO();
-        List lista = produto_DAO.listALL();
-        produtoControle.setList(lista);
+
+        ProdLista = produto_DAO.listALL();
+        produtoControle.setList(ProdLista);
         jTablel.setModel(produtoControle);
 
     }
@@ -123,32 +126,32 @@ public class JDlgProdutoNovo extends javax.swing.JDialog {
 
     private void jBtnIncluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnIncluirActionPerformed
         // TODO add your handling code here:
+        jDlgProdutoNovoIA.incluindo = true;
+        jDlgProdutoNovoIA.setTelaAnterior(this);
         jDlgProdutoNovoIA.setTitle("Inclusão");
 
         jDlgProdutoNovoIA.setVisible(true);
-        List lista = produto_DAO.listALL();
 
-//            jDlgVendedorNovoIA.setTitle("Inclusão");
-//
-//        jDlgVendedorNovoIA.setVisible(true);
-//        List lista = vendedor_DAO.listALL();
+        ProdLista = produto_DAO.listALL();
+        produtoControle.setList(ProdLista);
+        jTablel.setModel(produtoControle);
     }//GEN-LAST:event_jBtnIncluirActionPerformed
 
     private void jBtnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAlterarActionPerformed
         // TODO add your handling code here:
-        jDlgProdutoNovoIA.setTitle("Alteração");
+        jDlgProdutoNovoIA.incluindo = true;
         int roSel = jTablel.getSelectedRow();
-        ProdutoPhsb produtoPhsb = produtoControle.getBean(roSel);
-        jDlgProdutoNovoIA.beanView(produtoPhsb);
+        produtoPhsb = produtoControle.getBean(roSel);
 
+        jDlgProdutoNovoIA.beanView(produtoPhsb);
+        jDlgProdutoNovoIA.setTitle("Alteração");
+        jDlgProdutoNovoIA.setTelaAnterior(this);
         jDlgProdutoNovoIA.setVisible(true);
 
-//          jDlgVendedorNovoIA.setTitle("Alteração");
-//        int rowSel = jTablel.getSelectedRow();
-//        VendedorPhsb vendedorPhsb =  vendedorControle.getBean(rowSel);
-//        jDlgVendedorNovoIA.beanView(vendedorPhsb);
-//
-//        jDlgVendedorNovoIA.setVisible(true);
+        ProdLista = produto_DAO.listALL();
+        produtoControle.setList(ProdLista);
+        jTablel.setModel(produtoControle);
+
 
     }//GEN-LAST:event_jBtnAlterarActionPerformed
 

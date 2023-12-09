@@ -1,5 +1,5 @@
 package bean;
-// Generated 01/12/2023 10:35:20 by Hibernate Tools 4.3.1
+// Generated 08/12/2023 12:09:27 by Hibernate Tools 4.3.1
 
 
 
@@ -11,6 +11,7 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -28,28 +29,28 @@ public class ProdutoPhsb  implements java.io.Serializable {
      private String tipoPhsb;
      private double valorPhsb;
      private String nomePhsb;
-     private String produtoPhsbcol;
+    
     
 
     public ProdutoPhsb() {
     }
 
 	
-    public ProdutoPhsb(int idprodutoPhsb, VendedorPhsb vendedorPhsb, String tipoPhsb, double valorPhsb, String nomePhsb, String produtoPhsbcol) {
+    public ProdutoPhsb(int idprodutoPhsb, VendedorPhsb vendedorPhsb, String tipoPhsb, double valorPhsb, String nomePhsb) {
         this.idprodutoPhsb = idprodutoPhsb;
         this.vendedorPhsb = vendedorPhsb;
         this.tipoPhsb = tipoPhsb;
         this.valorPhsb = valorPhsb;
         this.nomePhsb = nomePhsb;
-        this.produtoPhsbcol = produtoPhsbcol;
+       
     }
-    public ProdutoPhsb(int idprodutoPhsb, VendedorPhsb vendedorPhsb, String tipoPhsb, double valorPhsb, String nomePhsb, String produtoPhsbcol, Set vendaProdutoPhsbs) {
+    public ProdutoPhsb(int idprodutoPhsb, VendedorPhsb vendedorPhsb, String tipoPhsb, double valorPhsb, String nomePhsb,  Set vendaProdutoPhsbs) {
        this.idprodutoPhsb = idprodutoPhsb;
        this.vendedorPhsb = vendedorPhsb;
        this.tipoPhsb = tipoPhsb;
        this.valorPhsb = valorPhsb;
        this.nomePhsb = nomePhsb;
-       this.produtoPhsbcol = produtoPhsbcol;
+     
      
     }
    
@@ -106,17 +107,22 @@ public class ProdutoPhsb  implements java.io.Serializable {
     }
 
     
-    @Column(name="produto_phsbcol", nullable=false, length=45)
-    public String getProdutoPhsbcol() {
-        return this.produtoPhsbcol;
-    }
-    
-    public void setProdutoPhsbcol(String produtoPhsbcol) {
-        this.produtoPhsbcol = produtoPhsbcol;
+  
+
+public String toString() {
+
+        return getNomePhsb();
     }
 
-
-
+    public boolean equals(Object object) {
+        if (object instanceof ClientePhsb) {
+            ProdutoPhsb produtoPhsb = (ProdutoPhsb) object;
+            if (this.getIdprodutoPhsb()== produtoPhsb.getIdprodutoPhsb()) {
+                return true;
+            }            
+        }
+        return true;
+    }
 
 
 }

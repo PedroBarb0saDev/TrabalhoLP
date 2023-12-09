@@ -5,6 +5,7 @@
  */
 package dao;
 
+import bean.VendaPhsb;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
@@ -13,36 +14,37 @@ import org.hibernate.criterion.Restrictions;
  *
  *
  */
-public class Venda_produto_DAO extends DAO_Abstract{
-      @Override
+public class Venda_produto_DAO extends DAO_Abstract {
+
+    @Override
     public void insert(Object object) {
-       session.beginTransaction();
-       session.save(object);
-       session.getTransaction().commit();
+        session.beginTransaction();
+        session.save(object);
+        session.getTransaction().commit();
     }
 
-    @Override 
+    @Override
     public void update(Object object) {
-       session.beginTransaction();
+        session.beginTransaction();
         session.flush();
-       session.clear();
-       session.update(object);
-       session.getTransaction().commit();
+        session.clear();
+        session.update(object);
+        session.getTransaction().commit();
     }
 
     @Override
     public void delete(Object object) {
-       session.beginTransaction();
-       session.flush();
-       session.clear();
-       session.delete( object);
-       session.getTransaction().commit();
+        session.beginTransaction();
+        session.flush();
+        session.clear();
+        session.delete(object);
+        session.getTransaction().commit();
     }
 
     @Override
     public Object list(int id) {
         session.beginTransaction();
-        Criteria criteria = session.createCriteria(Venda_produto_DAO.class);
+        Criteria criteria = session.createCriteria(VendaPhsb.class);
         criteria.add(Restrictions.eq("idvenda_produto_phsb", id));
         List Lista = criteria.list();
         session.getTransaction().commit();
@@ -52,7 +54,16 @@ public class Venda_produto_DAO extends DAO_Abstract{
     @Override
     public List listALL() {
         session.beginTransaction();
-        Criteria criteria = session.createCriteria(Venda_produto_DAO.class);
+        Criteria criteria = session.createCriteria(VendaPhsb.class);
+        List Lista = criteria.list();
+        session.getTransaction().commit();
+        return Lista;
+    }
+
+    public List listProduto(VendaPhsb vendaPhsb) {
+        session.beginTransaction();
+        Criteria criteria = session.createCriteria(VendaPhsb.class);
+        criteria.add(Restrictions.eq("vendaPhsb", vendaPhsb));
         List Lista = criteria.list();
         session.getTransaction().commit();
         return Lista;

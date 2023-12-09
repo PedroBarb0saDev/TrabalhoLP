@@ -15,9 +15,9 @@ import java.util.List;
  */
 public class JDlgClientePesquisa extends javax.swing.JDialog {
 
-    private JDlgCliente jDlgCliente;
+     JDlgCliente jDlgCliente;
     private ClienteControle clienteControle;
-
+Cliente_DAO cliente_DAO;
     /**
      * Creates new form JDlgClientePesquisa
      */
@@ -29,10 +29,11 @@ public class JDlgClientePesquisa extends javax.swing.JDialog {
         setTitle("Consultar  Cliente");
 
         clienteControle = new ClienteControle();
-        Cliente_DAO cliente_DAO = new Cliente_DAO();
+        cliente_DAO = new Cliente_DAO();
+        
         List lista = cliente_DAO.listALL();
-        clienteControle.setList(lista);
         jTable1.setModel(clienteControle);
+            clienteControle.setList(lista);
     }
 
     public void setTelaAnterior(JDlgCliente jDlgCliente) {
@@ -123,20 +124,8 @@ public class JDlgClientePesquisa extends javax.swing.JDialog {
         
       
         setVisible(false);
-//        int rowSel = jTable1.getSelectedRow();
-//
-//        if (rowSel != -1) {
-//            ClientePhsb clientePhsb = clienteControle.getBean(rowSel);
-//            jDlgCliente.beanView(clientePhsb);
-//        } else {
-//           System.exit(0);
-//        }
 
-//  int rowSel = jTable1.getSelectedRow();
-//         ClientePhsb clientePhsb =  clienteControle.getBean(rowSel);
-//        jDlgCliente.beanView(clientePhsb);
-//        setVisible(false);
-//          this.dispose();
+//
     }//GEN-LAST:event_jBtnOkActionPerformed
 
     private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed

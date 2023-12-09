@@ -25,22 +25,23 @@ public class Util {
             vetcomp[i].setEnabled(valor);
         }
     }
+   
+    
 
-    public static void limparCampos(JComponent... vetComp) {
-
+       public static void limparCampos(JComponent... vetComp) {
         for (JComponent componente : vetComp) {
-            if (componente instanceof JTextField) {
-                JTextField obj = (JTextField) componente;
-                obj.setText("");
-            } else if (componente instanceof JComboBox) {
-                JComboBox obj = (JComboBox) componente;
-                obj.setSelectedIndex(-1);
-            } else if (componente instanceof JCheckBox) {
-                JCheckBox obj = (JCheckBox) componente;
-                obj.setSelected(false);
+            if ( componente instanceof JTextField){
+                JTextField objeto = (JTextField) componente;
+                objeto.setText("");
+            } else if ( componente instanceof JComboBox) {
+                JComboBox objeto = (JComboBox) componente;
+                objeto.setSelectedIndex(-1);
+            } else if ( componente instanceof JCheckBox) {
+                JCheckBox objeto = (JCheckBox) componente;
+                objeto.setSelected(false);
             }
         }
-
+       
     }
 
     public static void mensagem(String mensagem) {
@@ -48,9 +49,17 @@ public class Util {
     }
 
     public static boolean pergunta(String pergunta) {
-        JOptionPane.showConfirmDialog(null, pergunta, "Pergunta", JOptionPane.YES_NO_OPTION);
 
-        return false;
+        int innt = JOptionPane.showConfirmDialog(null, pergunta, "Perguntaa", JOptionPane.YES_NO_OPTION);
+
+        if (innt == 1) {
+            return false;
+        } else if (innt == 0) {
+            return true;
+        } else {
+            return false;
+        }
+
     }
 
     public static int strInt(String cad) {
@@ -58,10 +67,14 @@ public class Util {
     }
 
     public static String intStr(int num) {
-
         return String.valueOf(num);
     }
+    
+    public static double intDouble(int num){
+        return Double.valueOf(num);
+    }
 
+    
     public static double strDouble(String cad) {
         return Double.valueOf(cad);
     }
@@ -71,19 +84,20 @@ public class Util {
     }
 
     public static Date strDate(String data) {
-        try {
-            SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yy");
-            return formato.parse(data);
-        } catch (ParseException ex) {
+       try{
+           SimpleDateFormat formato = new SimpleDateFormat("dd/mm/yyyy");
+           return formato.parse(data);
+    } catch(ParseException ex){
             System.out.println("erro na conversao");
-
-        }
-        return null;
-    }
+            
+    }return null;}
 
     public static String dateStr(java.util.Date data) {
-        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yy");
-        return formato.format(data);
-    }
-
+       SimpleDateFormat formato = new SimpleDateFormat("dd/mm/yyyy");
+       return formato.format(data);
+      }
+    
+  
 }
+
+

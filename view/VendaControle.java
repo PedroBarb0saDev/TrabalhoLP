@@ -59,7 +59,7 @@ public class VendaControle extends AbstractTableModel{
             return vendaPhsb.getClientePhsb();
         }
         if (columnIndex == 4) {
-            return vendaPhsb.getFkVendedorPhsb();
+            return vendaPhsb.getVendedorPhsb();
         }
         
         return "";
